@@ -4,14 +4,14 @@ Willkommen zu unserem Projekt ITI für das Sommersemester 2025 im Studiengang Wi
 
 💡 Worum geht’s?
 
-Wir entwickeln einen interaktiven Lernassistenten, der beim Einstieg in die Webprogrammierung hilft – mit einfachen Erklärungen, Übungen, kleinen Quizzen und praktischen Beispielen. 
+Wir entwickeln einen interaktiven Lernassistenten, der beim Einstieg in die Webprogrammierung hilft mit einfachen Erklärungen, Übungen, kleinen Quizzen und praktischen Beispielen. 
 
 Im Fokus stehen:
 - **HTML**
 - **CSS**
 - **JavaScript**
 
-Die Idee: Studierende können jederzeit Fragen stellen, sich Inhalte erklären lassen oder selbst Code schreiben und prüfen – ganz ohne Nachhilfe oder stundenlanges Googeln.
+Die Idee: Studierende können jederzeit Fragen stellen, sich Inhalte erklären lassen oder selbst Code schreiben und prüfen  ganz ohne Nachhilfe oder stundenlanges Googeln.
 
 ## ✨ Was soll der Assistent können?
 
@@ -36,4 +36,4 @@ Die Idee: Studierende können jederzeit Fragen stellen, sich Inhalte erklären l
 
 
 
-> Dieses Projekt entsteht im Rahmen der Projektarbeit Wirtschaftsinformatik und soll zeigen, wie moderne Tools das Lernen vereinfachen können – unkompliziert, verständlich und jederzeit verfügbar.
+> Dieses Projekt entsteht im Rahmen der Projektarbeit Wirtschaftsinformatik und soll zeigen, wie moderne Tools das Lernen vereinfachen können  unkompliziert, verständlich und jederzeit verfügbar.
