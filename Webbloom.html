@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>WebBloom - Grow Your Web Development Skills</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+
+
+
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+    }
+  </style>
+</head>
+<body class="bg-gradient-to-r from-green-100 to-blue-100 text-gray-700">
+    <!-- Header -->
+  <header class="bg-white shadow sticky top-0 z-50">
+    <div class="max-w-7xl mx-auto flex justify-between items-center p-4">
+      <div class="flex items-center space-x-2">
+        <img src="https://img.icons8.com/ios-filled/50/26e07f/sakura.png" class="w-8 h-8" alt="Bloom Symbol">
+        <h1 class="text-2xl font-bold" style="color: #FA9DA6;">WebBloom</h1>
+    </div>
+      <nav class="space-x-6 text-sm">
+        <a href="#features" class="hover:text-blue-500">Features</a>
+        <a href="#how-it-works" class="hover:text-blue-500">How it Works</a>
+        <a href="#pricing" class="hover:text-blue-500">Pricing</a>
+        <a href="#faq" class="hover:text-blue-500">FAQ</a>
+        <button class="text-white px-4 py-2 rounded-full" style="background-color: #FA9DA6; transition: background-color 0.3s;" onmouseover="this.style.backgroundColor='#f98a96'" onmouseout="this.style.backgroundColor='#FA9DA6'">Login</button>
+    </nav>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section class="text-center py-20 bg-gradient-to-r from-green-100 to-blue-100">
+    <div class="max-w-2xl mx-auto">
+        <h2 class="text-4xl font-bold mb-4">Grow Your Web Skills with WebBloom </h2>
+        <p class="text-lg mb-6">Learn HTML, CSS, and JavaScript interactively with your personal AI tutor.</p>
+      <button class="bg-green-400 hover:bg-green-500 text-white px-6 py-3 rounded-full font-semibold">Start Learning Free</button>
+    </div>
+  </section>
+
+  <!-- Features -->
+  <section id="features" class="py-20">
+    <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8">
+      <div class="bg-white p-6 rounded-lg shadow hover:shadow-lg">
+        <img src="https://img.icons8.com/ios-filled/100/26e07f/internet.png" alt="Web Icon" class="mb-4 mx-auto">
+        <h3 class="text-xl font-semibold mb-2">Master the Web</h3>
+        <p>Step-by-step tutorials for HTML, CSS, and JavaScript that make you industry-ready.</p>
+      </div>
+      <div class="bg-white p-6 rounded-lg shadow hover:shadow-lg">
+        <img src="https://img.icons8.com/ios-filled/100/26e07f/artificial-intelligence.png" alt="AI Icon" class="mb-4 mx-auto">
+        <h3 class="text-xl font-semibold mb-2">AI-Powered Tutoring</h3>
+        <p>Your personal AI assistant helps you understand code, fix errors, and grow your skills quickly.</p>
+      </div>
+      <div class="bg-white p-6 rounded-lg shadow hover:shadow-lg">
+        <img src="https://img.icons8.com/ios-filled/100/26e07f/plant-under-sun.png" alt="Bloom Icon" class="mb-4 mx-auto">
+        <h3 class="text-xl font-semibold mb-2">Bloom Your Career</h3>
+        <p>Turn your learning into real-world projects, certifications, and opportunities.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- How It Works -->
+  <section id="how-it-works" class=from-green-100 to-blue-100>
+    <div class="max-w-4xl mx-auto text-center">
+      <h2 class="text-3xl font-bold mb-8">How It Works</h2>
+      <ol class="space-y-6">
+        <li class="flex items-center space-x-4">
+          <div class="w-8 h-8 bg-green-400 text-white flex items-center justify-center rounded-full font-bold">1</div>
+          <p>Sign up and personalize your learning path.</p>
+        </li>
+        <li class="flex items-center space-x-4">
+          <div class="w-8 h-8 bg-green-400 text-white flex items-center justify-center rounded-full font-bold">2</div>
+          <p>Follow interactive lessons, quizzes, and code challenges.</p>
+        </li>
+        <li class="flex items-center space-x-4">
+          <div class="w-8 h-8 bg-green-400 text-white flex items-center justify-center rounded-full font-bold">3</div>
+          <p>Get feedback and support from your AI mentor instantly.</p>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- Pricing -->
+  <section id="pricing" class="py-20">
+    <div class="max-w-5xl mx-auto text-center">
+      <h2 class="text-3xl font-bold mb-8">Pricing Plans</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <div class="bg-white p-8 rounded-lg shadow-lg">
+          <h3 class="text-2xl font-semibold mb-4">Free</h3>
+          <p class="text-4xl font-bold mb-4">$0</p>
+          <ul class="mb-6 space-y-2">
+            <li>✓ Access to HTML & CSS courses</li>
+            <li>✓ Weekly challenges</li>
+            <li>✓ Basic AI feedback</li>
+          </ul>
+          <button class="bg-blue-400 hover:bg-blue-500 text-white px-6 py-3 rounded-full">Get Started</button>
+        </div>
+        <div class="bg-green-100 p-8 rounded-lg shadow-lg">
+          <h3 class="text-2xl font-semibold mb-4">Pro</h3>
+          <p class="text-4xl font-bold mb-4">$9.99/mo</p>
+          <ul class="mb-6 space-y-2">
+            <li>✓ All Free features +</li>
+            <li>✓ JavaScript full course</li>
+            <li>✓ Personalized mentorship</li>
+            <li>✓ Certifications</li>
+          </ul>
+          <button class="bg-green-400 hover:bg-green-500 text-white px-6 py-3 rounded-full">Upgrade</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section id="faq" class="py-20 bg-gradient-to-r from-green-100 to-blue-100">
+    <div class="max-w-4xl mx-auto">
+      <h2 class="text-3xl font-bold text-center mb-8">Frequently Asked Questions</h2>
+      <div class="space-y-6">
+        <div>
+          <h4 class="font-semibold">Is WebBloom free?</h4>
+          <p>Yes! You can start learning HTML and CSS completely free. For more features, you can upgrade to Pro.</p>
+        </div>
+        <div>
+          <h4 class="font-semibold">Can I cancel anytime?</h4>
+          <p>Absolutely. WebBloom Pro is a monthly subscription with no long-term commitment.</p>
+        </div>
+        <div>
+          <h4 class="font-semibold">Who is WebBloom for?</h4>
+          <p>WebBloom is perfect for beginners and intermediate learners looking to master web programming in a fun, supportive environment.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Final CTA -->
+  <section class="py-20 text-center bg-gradient-to-r from-green-100 to-blue-100">
+    <div class="max-w-2xl mx-auto">
+      <h2 class="text-4xl font-bold mb-6">Ready to Bloom into a Web Developer?</h2>
+      <button class="text-white px-8 py-4 rounded-full text-lg font-semibold" style="background-color: #FA9DA6;">Join WebBloom Now</button>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-white py-8">
+    <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center">
+      <p class="text-sm">&copy; 2025 WebBloom. All rights reserved.</p>
+      <div class="space-x-4">
+        <a href="#" class="hover:text-blue-500">Privacy Policy</a>
+        <a href="#" class="hover:text-blue-500">Terms of Service</a>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>
