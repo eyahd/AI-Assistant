@@ -1,35 +1,32 @@
-<?php 
+<?php
 session_start();
+// Connect to MySQL
+$host = 'localhost';
+$db = 'user_registration'; // your database name
+$user = 'root'; // default for XAMPP
+$pass = ''; // default for XAMPP
+$conn = new mysqli($host, $user, $pass, $db);
 
-include("connection.php");
-include("function.php");
-
-if ($_SERVER['REQUEST_METHOD'] == "POST") {
-    $user_name = $_POST['user_name'];
-    $password = $_POST['password'];
-
-    if (!empty($user_name) && !empty($password) && !is_numeric($user_name)) {
-        // Create a unique user ID
-        $user_id = random_num(20);
-
-        // Hash the password before storing
-        $hashed_password = password_hash($password, PASSWORD_DEFAULT);
-
-        // Use prepared statement
-        $query = "INSERT INTO users (user_id, user_name, password) VALUES (?, ?, ?)";
-        $stmt = mysqli_prepare($con, $query);
-        mysqli_stmt_bind_param($stmt, "sss", $user_id, $user_name, $hashed_password);
-
-        if (mysqli_stmt_execute($stmt)) {
-            header("Location: login.php");
-            exit;
-        } else {
-            echo "Error: Could not register user.";
-        }
-
-        mysqli_stmt_close($stmt);
-    } else {
-        echo "Please enter some valid information!";
-    }
+// Check connection
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
 }
+
+// Get form inputs safely
+$email = $_POST['email'];
+$password = password_hash($_POST['password'], PASSWORD_DEFAULT); // hash password
+
+// Insert into database
+$sql = "INSERT INTO users (email, password) VALUES (?, ?)";
+$stmt = $conn->prepare($sql);
+$stmt->bind_param("ss", $email, $password);
+
+if ($stmt->execute()) {
+    echo "Registration successful!";
+} else {
+    echo "Error: " . $stmt->error;
+}
+
+$stmt->close();
+$conn->close();
 ?>
