@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <title>Web-Tutor KI-Chatbot</title>
+    <style>
+        body { font-family: Arial; padding: 20px; }
+        #chatbox { border: 1px solid #ccc; padding: 10px; height: 400px; overflow-y: auto; }
+        .message { margin-bottom: 10px; }
+        .user { color: blue; }
+        .bot { color: green; }
+    </style>
+</head>
+<body>
+
+<h2>💬 KI-Tutor für Webprogrammierung</h2>
+
+<div id="chatbox"></div>
+
+<form id="chat-form">
+    <input type="text" id="user-input" placeholder="Frag mich etwas über HTML, CSS, JS..." required style="width: 80%;">
+    <button type="submit">Senden</button>
+</form>
+
+<script>
+const form = document.getElementById('chat-form');
+const input = document.getElementById('user-input');
+const chatbox = document.getElementById('chatbox');
+
+form.addEventListener('submit', async function(e) {
+    e.preventDefault();
+    const userMessage = input.value;
+    chatbox.innerHTML += `<div class="message user"><strong>Du:</strong> ${userMessage}</div>`;
+    input.value = '';
+
+    const response = await fetch('chat.php', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ message: userMessage })
+    });
+
+    const data = await response.json();
+    chatbox.innerHTML += `<div class="message bot"><strong>Tutor:</strong> ${data.reply}</div>`;
+    chatbox.scrollTop = chatbox.scrollHeight;
+});
+</script>
+
+</body>
+</html>
