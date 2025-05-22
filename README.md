@@ -30,7 +30,7 @@ Die Idee: Studierende können jederzeit Fragen stellen, sich Inhalte erklären l
 👩‍💻 Unser Team
   
 -Eya Hmadi
--Hasnae Dahmman
+-Hasnae Dahmmani
 -Marceline Louise Bodo Kamdem
 -Nada Alileche
 
