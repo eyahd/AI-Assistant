@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Lesson 4: HTML Links & Images – WebBloom</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+    }
+    @media print {
+      .no-print { display: none; }
+    }
+  </style>
+</head>
+<body class="bg-white text-gray-800 transition-colors duration-300" id="page">
+
+    <!-- Header -->
+  <header class="bg-purple-100 shadow sticky top-0 z-50 flex justify-between items-center p-4">
+    <div class="flex items-center space-x-4">
+      <button onclick="toggleDarkMode()" class="bg-gray-200 px-3 py-1 rounded">🌓</button>
+    </div>
+
+    <!-- Main Content -->
+  <main class="p-6 max-w-4xl mx-auto space-y-12">
+  <section class="text-center py-16">
+    <div class="max-w-2xl mx-auto">
+      <h2 class="text-4xl font-bold mb-4">Lesson 4: HTML Links & Images</h2>
+      <p class="text-lg mb-6">Learn how to add links and images to make your webpages interactive and beautiful!</p>
+    </div>
+  </section>
+
+
+  <!-- Lesson Content -->
+  <section class="py-10 max-w-5xl mx-auto px-4">
+    <div class="bg-white p-6 rounded-lg shadow mb-6">
+      <h3 class="text-2xl font-semibold mb-4">Adding Links</h3>
+      <p class="mb-4">In HTML, links are created using the <code>&lt;a&gt;</code> tag. The <code>href</code> attribute defines the URL the link points to.</p>
+      <pre class="bg-gray-100 p-4 rounded"><code>&lt;a href="https://example.com"&gt;Visit Example&lt;/a&gt;</code></pre>
+    </div>
+
+    <div class="bg-white p-6 rounded-lg shadow mb-6">
+      <h3 class="text-2xl font-semibold mb-4">Adding Images</h3>
+      <p class="mb-4">To add images, use the <code>&lt;img&gt;</code> tag. Set the <code>src</code> attribute to the image URL and the <code>alt</code> attribute for accessibility.</p>
+      <pre class="bg-gray-100 p-4 rounded"><code>&lt;img src="image.jpg" alt="Description of image"&gt;</code></pre>
+    </div>
+
+    <div class="bg-white p-6 rounded-lg shadow mb-6">
+      <h3 class="text-2xl font-semibold mb-4">Example in Action</h3>
+      <p>Here’s a working example:</p>
+      <iframe srcdoc="&lt;a href='https://www.w3schools.com' target='_blank'&gt;W3Schools&lt;/a&gt;&lt;br&gt;&lt;img src='https://www.w3schools.com/images/lamp.jpg' alt='Lamp Image' width='200'&gt;" class="w-full h-60 mt-4 border" sandbox></iframe>
+    </div>
+
+    <!-- Lesson Completion -->
+    <section>
+      <label class="inline-flex items-center space-x-2">
+        <input type="checkbox" id="lessonComplete" class="form-checkbox text-blue-500" onchange="saveProgress()" />
+        <span>Mark Lesson as Complete</span>
+      </label>
+    </section>
+    <!-- Quiz Section -->
+    <div class="bg-white p-6 rounded-lg shadow">
+      <h3 class="text-2xl font-semibold mb-4">Quiz: Test Your Knowledge!</h3>
+      <form id="quizForm">
+        <div class="mb-4">
+          <label class="block mb-2">1. What does the <code>href</code> attribute do?</label>
+          <select class="w-full p-2 border rounded" name="q1">
+            <option value="">Select an answer</option>
+            <option value="a">Defines image size</option>
+            <option value="b">Links to another webpage</option>
+            <option value="c">Styles the text</option>
+          </select>
+        </div>
+        <div class="mb-4">
+          <label class="block mb-2">2. What tag is used to display images?</label>
+          <select class="w-full p-2 border rounded" name="q2">
+            <option value="">Select an answer</option>
+            <option value="a">&lt;a&gt;</option>
+            <option value="b">&lt;img&gt;</option>
+            <option value="c">&lt;link&gt;</option>
+          </select>
+        </div>
+        <button type="button" onclick="checkQuiz()" class="bg-pink-400 hover:bg-pink-500 text-white px-4 py-2 rounded-full font-semibold">Submit Answers</button>
+        <p id="quizResult" class="mt-4 font-semibold"></p>
+      </form>
+    </div>
+  </section>
+<!-- Navigation -->
+    <nav class="flex justify-between text-blue-500 mt-8">
+      <a href="lesson3.html" class="hover:underline">&larr; Previous Lesson</a>
+      <a href="lesson5.html" class="hover:underline">Next Lesson &rarr;</a>
+    </nav>
+
+  <!-- Footer -->
+  <footer class="bg-purple-100 text-center p-4 mt-10">
+    <p class="text-sm text-gray-600">&copy; 2025 WebBloom</p>
+  </footer>
+
+  <!-- Quiz Logic -->
+  <script>
+    function checkQuiz() {
+      const form = document.forms.quizForm;
+      let score = 0;
+      if (form.q1.value === 'b') score++;
+      if (form.q2.value === 'b') score++;
+      const result = document.getElementById('quizResult');
+      result.textContent = `You scored ${score}/2!`;
+    }
+
+// Code Runner (not used in this version but kept for future use)
+    function runCode() {
+      const code = document.getElementById('codeEditor')?.value;
+      const iframe = document.getElementById('preview');
+      if (iframe && code) iframe.srcdoc = code;
+    }
+
+    // Save lesson progress
+    function saveProgress() {
+      localStorage.setItem('lesson2Complete', document.getElementById('lessonComplete').checked);
+    }
+
+    // Load progress
+    window.onload = function() {
+      document.getElementById('lessonComplete').checked = localStorage.getItem('lesson2Complete') === 'true';
+    }
+// Dark Mode
+    function toggleDarkMode() {
+      document.getElementById('page').classList.toggle('dark-mode');
+    }
+  </script>
+
+</body>
+</html>
