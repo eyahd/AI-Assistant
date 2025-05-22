@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Learn JavaScript - WebBloom</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+    }
+  </style>
+</head>
+<body class="bg-gradient-to-r from-yellow-100 to-orange-100 text-gray-800">
+  <!-- Header -->
+  <header class="bg-white shadow sticky top-0 z-50">
+    <div class="max-w-7xl mx-auto flex justify-between items-center p-4">
+      <div class="flex items-center space-x-2">
+        <img src="https://img.icons8.com/ios-filled/50/FA9DA6/code.png" class="w-8 h-8" alt="Code Icon">
+        <h1 class="text-2xl font-bold" style="color: #FA9DA6;">WebBloom</h1>
+      </div>
+      <nav class="space-x-6 text-sm">
+        <a href="index.html" class="hover:text-orange-500">Home</a>
+        <a href="#lessons" class="hover:text-orange-500">Lessons</a>
+        <a href="#tests" class="hover:text-orange-500">Tests</a>
+        <a href="#resources" class="hover:text-orange-500">Resources</a>
+          <a href="login.html"  class="text-white px-4 py-2 rounded-full" style="background-color: #FA9DA6; transition: background-color 0.3s;" onmouseover="this.style.backgroundColor='#f98a96'" onmouseout="this.style.backgroundColor='#FA9DA6'">Login</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="text-center py-16">
+    <div class="max-w-2xl mx-auto">
+      <h2 class="text-4xl font-bold mb-4">Learn JavaScript Step-by-Step</h2>
+      <p class="text-lg mb-6">Make your websites dynamic and interactive with JavaScript!</p>
+      <button class="bg-yellow-400 hover:bg-yellow-500 text-white px-6 py-3 rounded-full font-semibold">Start First Lesson</button>
+    </div>
+  </section>
+
+  <!-- Lessons Section -->
+  <section id="lessons" class="py-16">
+    <div class="max-w-6xl mx-auto">
+      <h3 class="text-3xl font-bold mb-8 text-center">JavaScript Lessons</h3>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div class="bg-white p-6 rounded-lg shadow">
+          <h4 class="text-xl font-semibold mb-2">Lesson 1: JavaScript Basics</h4>
+          <ul class="list-disc pl-5 space-y-1">
+            <li>What is JavaScript?</li>
+            <li>Variables & Data Types</li>
+            <li>Console & Debugging</li>
+          </ul>
+        </div>
+        <div class="bg-white p-6 rounded-lg shadow">
+          <h4 class="text-xl font-semibold mb-2">Lesson 2: Functions & Logic</h4>
+          <ul class="list-disc pl-5 space-y-1">
+            <li>Functions and Parameters</li>
+            <li>Conditionals and Loops</li>
+            <li>Scope and Return Values</li>
+          </ul>
+        </div>
+        <div class="bg-white p-6 rounded-lg shadow">
+          <h4 class="text-xl font-semibold mb-2">Lesson 3: DOM Manipulation</h4>
+          <ul class="list-disc pl-5 space-y-1">
+            <li>Selecting Elements</li>
+            <li>Changing Content</li>
+            <li>Event Listeners</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Tests Section -->
+  <section id="tests" class="py-16 bg-gradient-to-r from-yellow-100 to-orange-100">
+    <div class="max-w-4xl mx-auto text-center">
+      <h3 class="text-3xl font-bold mb-8">Practice With JavaScript</h3>
+      <p class="mb-6">Reinforce your knowledge with coding challenges and mini-projects.</p>
+      <button class="bg-orange-400 hover:bg-orange-500 text-white px-6 py-3 rounded-full">Try a Coding Challenge</button>
+    </div>
+  </section>
+
+  <!-- Resources Section -->
+  <section id="resources" class="py-16">
+    <div class="max-w-4xl mx-auto">
+      <h3 class="text-3xl font-bold mb-8 text-center">Recommended Resources</h3>
+      <ul class="space-y-4 text-lg">
+        <li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript" class="text-orange-600 hover:underline">MDN Web Docs: JavaScript</a></li>
+        <li><a href="https://javascript.info/" class="text-orange-600 hover:underline">JavaScript.info</a></li>
+        <li><a href="https://www.codecademy.com/learn/introduction-to-javascript" class="text-orange-600 hover:underline">Codecademy JS Course</a></li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-white py-8 mt-10">
+    <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center">
+      <p class="text-sm">&copy; 2025 WebBloom. All rights reserved.</p>
+      <div class="space-x-4">
+        <a href="#" class="hover:text-orange-500">Privacy Policy</a>
+        <a href="#" class="hover:text-orange-500">Terms of Service</a>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>

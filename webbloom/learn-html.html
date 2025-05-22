@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Learn HTML – WebBloom</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+    }
+  </style>
+</head>
+<body class="bg-gradient-to-r from-pink-100 to-yellow-100 text-gray-800">
+
+  <!-- Header -->
+  <header class="bg-white shadow sticky top-0 z-50">
+    <div class="max-w-7xl mx-auto flex justify-between items-center p-4">
+      <div class="flex items-center space-x-2">
+        <img src="https://img.icons8.com/ios-filled/50/FA9DA6/code.png" class="w-8 h-8" alt="Code Icon">
+        <h1 class="text-2xl font-bold" style="color: #FA9DA6;">WebBloom</h1>
+      </div>
+      <nav class="space-x-6 text-sm">
+        <a href="index.html" class="hover:text-pink-500">Home</a>
+        <a href="#lessons" class="hover:text-orange-500">Lessons</a>
+        <a href="#tests" class="hover:text-orange-500">Tests</a>
+        <a href="#resources" class="hover:text-orange-500">Resources</a>
+          <a href="login.html"  class="text-white px-4 py-2 rounded-full" style="background-color: #FA9DA6; transition: background-color 0.3s;" onmouseover="this.style.backgroundColor='#f98a96'" onmouseout="this.style.backgroundColor='#FA9DA6'">Login</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Intro Section -->
+  <section class="text-center py-16">
+    <div class="max-w-2xl mx-auto">
+      <h2 class="text-4xl font-bold mb-4">Learn HTML</h2>
+      <p class="text-lg mb-6">The foundation of every webpage starts with HTML. Let’s dive into the basics and beyond.</p>
+  <a href="lesson1.html">
+    <button class="bg-pink-400 hover:bg-pink-500 text-white px-6 py-3 rounded-full font-semibold">
+        Start First Lesson
+    </button>
+</a>
+
+    </div>
+  </section>
+
+<section class="py-16 bg-gradient-to-r from-pink-100 to-yellow-100" id="lessons">
+  <div class="max-w-6xl mx-auto">
+    <h3 class="text-3xl font-bold mb-8 text-center">HTML Lessons</h3>
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-6">
+      
+      <a href="lesson1.html" class="bg-white p-6 rounded-lg shadow hover:shadow-xl transition duration-300">
+        <h4 class="text-xl font-semibold mb-2">Lesson 1: What is HTML?</h4>
+        <p>Explore what HTML is and why it's the building block of the web.</p>
+      </a>
+
+      <a href="lesson2.html" class="bg-white p-6 rounded-lg shadow hover:shadow-xl transition duration-300">
+        <h4 class="text-xl font-semibold mb-2">Lesson 2: Basic Tags</h4>
+        <p>Learn the most commonly used HTML tags with examples and use cases.</p>
+      </a>
+
+      <a href="lesson3.html" class="bg-white p-6 rounded-lg shadow hover:shadow-xl transition duration-300">
+        <h4 class="text-xl font-semibold mb-2">Lesson 3: HTML Page Structure</h4>
+        <p>Understand the full layout of an HTML document from top to bottom.</p>
+      </a>
+
+      <a href="lesson4.html" class="bg-white p-6 rounded-lg shadow hover:shadow-xl transition duration-300">
+        <h4 class="text-xl font-semibold mb-2">Lesson 4: Build Your First Page</h4>
+        <p>Apply what you've learned by coding a real webpage step-by-step.</p>
+      </a>
+
+    </div>
+  </div>
+</section>
+
+
+  <!-- Footer -->
+  <footer class="bg-white py-8 mt-10">
+    <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center">
+      <p class="text-sm">&copy; 2025 WebBloom. All rights reserved.</p>
+      <div class="space-x-4">
+        <a href="#" class="hover:text-pink-500">Privacy Policy</a>
+        <a href="#" class="hover:text-pink-500">Terms of Service</a>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>
