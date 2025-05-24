@@ -26,10 +26,11 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST['email'], $_POST['pass
             header("Location: dashboard.html");
             exit();
         } else {
-            echo "Invalid email or password.";
+            echo "Invalid email or password.1";
         }
     } else {
-        echo "Invalid email or password.";
+        echo "Invalid email or password.2";
+        
     }
 
     $stmt->close();
