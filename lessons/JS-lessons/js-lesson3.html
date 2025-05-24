@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>CSS Lesson 2 – WebBloom</title>
+  <title>JS Lesson 3 – WebBloom</title>
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
   <style>
@@ -14,10 +14,10 @@
 <body class="bg-white text-gray-800 transition-colors duration-300" id="page">
 
   <!-- Header -->
-  <header class="bg-pink-100 shadow sticky top-0 z-50 flex justify-between items-center p-4">
-    <h1 class="text-2xl font-bold text-pink-500">CSS Lesson 2</h1>
+  <header class="bg-yellow-100 shadow sticky top-0 z-50 flex justify-between items-center p-4">
+    <h1 class="text-2xl font-bold text-yellow-600">JS Lesson 3</h1>
     <div class="flex items-center space-x-4">
-      <a href="learn-css.html" class="text-sm hover:text-pink-700">Back to Lessons</a>
+      <a href="learn-js.html" class="text-sm hover:text-yellow-800">Back to Lessons</a>
       <button onclick="toggleDarkMode()" class="bg-gray-200 px-3 py-1 rounded">🌓</button>
     </div>
   </header>
@@ -27,13 +27,12 @@
 
     <!-- Lesson -->
     <div>
-      <h2 class="text-3xl font-semibold mb-2">Layout and Positioning</h2>
-      <p class="mb-4">CSS provides powerful tools to arrange and position elements on a web page. Let's dive into layout and positioning techniques!</p>
+      <h2 class="text-3xl font-semibold mb-2">Loops in JavaScript</h2>
+      <p class="mb-4">Loops are used to run a block of code multiple times.</p>
       <ul class="list-disc pl-5 space-y-1">
-        <li><strong>Display:</strong> Controls the box type (block, inline, flex, grid).</li>
-        <li><strong>Position:</strong> Allows elements to be static, relative, absolute, or fixed.</li>
-        <li><strong>Flexbox:</strong> Efficient way to align and distribute space among items.</li>
-        <li><strong>Grid:</strong> Two-dimensional layout system for complex designs.</li>
+        <li><strong>for:</strong> Loops through a block of code a number of times.</li>
+        <li><strong>while:</strong> Loops through a block of code while a specified condition is true.</li>
+        <li><strong>do...while:</strong> Executes a block of code once, then repeats the loop while a condition is true.</li>
       </ul>
     </div>
 
@@ -41,26 +40,11 @@
     <div class="bg-gray-100 p-4 rounded">
       <h3 class="text-xl font-semibold mb-2">Try it Yourself</h3>
       <textarea id="codeEditor" class="w-full h-48 p-2 font-mono border rounded mb-2">
-<style>
-  .container {
-    display: flex;
-    justify-content: space-around;
+<script>
+  for (let i = 1; i <= 5; i++) {
+    console.log("Count: " + i);
   }
-  .box {
-    width: 100px;
-    height: 100px;
-    background: lightcoral;
-    text-align: center;
-    line-height: 100px;
-    color: white;
-    font-weight: bold;
-  }
-</style>
-<div class="container">
-  <div class="box">Box 1</div>
-  <div class="box">Box 2</div>
-  <div class="box">Box 3</div>
-</div>
+</script>
       </textarea>
       <button onclick="runCode()" class="bg-green-500 hover:bg-green-600 text-white px-4 py-2 rounded">Run Code</button>
       <div class="mt-4 border p-2 bg-white rounded">
@@ -83,18 +67,18 @@
       <form id="quizForm" class="space-y-4">
         <!-- Question 1 -->
         <div>
-          <p class="font-medium">1. Which CSS property is used to create a flex container?</p>
-          <label><input type="radio" name="q1" value="a" class="mr-2">position: flex;</label><br>
-          <label><input type="radio" name="q1" value="b" class="mr-2">display: flex;</label><br>
-          <label><input type="radio" name="q1" value="c" class="mr-2">flex-direction: row;</label>
+          <p class="font-medium">1. Which loop is best when you know how many times to iterate?</p>
+          <label><input type="radio" name="q1" value="a" class="mr-2">while</label><br>
+          <label><input type="radio" name="q1" value="b" class="mr-2">do...while</label><br>
+          <label><input type="radio" name="q1" value="c" class="mr-2">for</label>
         </div>
 
         <!-- Question 2 -->
         <div>
-          <p class="font-medium">2. What value of the <code>position</code> property removes the element from the normal flow?</p>
-          <label><input type="radio" name="q2" value="a" class="mr-2">relative</label><br>
-          <label><input type="radio" name="q2" value="b" class="mr-2">static</label><br>
-          <label><input type="radio" name="q2" value="c" class="mr-2">absolute</label>
+          <p class="font-medium">2. How do you stop a loop early?</p>
+          <label><input type="radio" name="q2" value="a" class="mr-2">continue</label><br>
+          <label><input type="radio" name="q2" value="b" class="mr-2">break</label><br>
+          <label><input type="radio" name="q2" value="c" class="mr-2">exit</label>
         </div>
       </form>
       <div id="quizResult" class="mt-4"></div>
@@ -102,9 +86,10 @@
     </div>
 
      <div class="flex justify-between">
-      <a href="css-lesson1.html" class="text-blue-500 hover:underline">&larr; Previous Lesson</a>
-      <a href="css-lesson3.html" class="text-blue-500 hover:underline">Next Lesson &rarr;</a>
+      <a href="js-lesson2.html" class="text-blue-500 hover:underline">&larr; Previous Lesson</a>
+      <a href="js-lesson4.html" class="text-blue-500 hover:underline">Next Lesson &rarr;</a>
     </div>
+
 
   </section>
 
@@ -123,11 +108,10 @@
       alert("Progress saved! 🎉");
     }
 
-    // Quiz Grading
     function gradeQuiz() {
       const answers = {
-        q1: "b",
-        q2: "c"
+        q1: "c",
+        q2: "b"
       };
       let score = 0;
       for (const q in answers) {
