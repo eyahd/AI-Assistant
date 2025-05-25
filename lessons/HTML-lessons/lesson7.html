@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Lesson 7: Semantic HTML – WebBloom</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <style>
+    body { font-family: 'Poppins', sans-serif; }
+    @media print { .no-print { display: none; } }
+  </style>
+</head>
+<body class="bg-white text-gray-800 transition-colors duration-300" id="page">
+
+<header class="bg-purple-100 shadow sticky top-0 z-50 flex justify-between items-center p-4">
+  <div class="flex items-center space-x-4">
+    <button onclick="toggleDarkMode()" class="bg-gray-200 px-3 py-1 rounded">🌓</button>
+  </div>
+</header>
+
+<main class="p-6 max-w-4xl mx-auto space-y-12">
+  <section class="text-center py-16">
+    <div class="max-w-2xl mx-auto">
+      <h2 class="text-4xl font-bold mb-4">Lesson 7: Semantic HTML</h2>
+      <p class="text-lg mb-6">Use semantic tags to create better-structured, more accessible HTML documents.</p>
+    </div>
+  </section>
+
+  <section class="py-10 max-w-5xl mx-auto px-4">
+    <div class="bg-white p-6 rounded-lg shadow mb-6">
+      <h3 class="text-2xl font-semibold mb-4">What is Semantic HTML?</h3>
+      <p class="mb-4">Semantic HTML tags describe the meaning of content. They improve accessibility, readability, and SEO.</p>
+      <ul class="list-disc pl-5 space-y-1">
+        <li><code>&lt;header&gt;</code> – for page or section headers</li>
+        <li><code>&lt;main&gt;</code> – for main page content</li>
+        <li><code>&lt;article&gt;</code> – for self-contained pieces of content</li>
+        <li><code>&lt;section&gt;</code> – for grouping related content</li>
+        <li><code>&lt;footer&gt;</code> – for page or section footers</li>
+      </ul>
+    </div>
+
+    <div class="bg-white p-6 rounded-lg shadow mb-6">
+      <h3 class="text-2xl font-semibold mb-4">Example in Action</h3>
+      <iframe srcdoc="&lt;header&gt;&lt;h1&gt;My Blog&lt;/h1&gt;&lt;/header&gt;&lt;main&gt;&lt;article&gt;&lt;h2&gt;First Post&lt;/h2&gt;&lt;p&gt;Welcome to my blog!&lt;/p&gt;&lt;/article&gt;&lt;/main&gt;&lt;footer&gt;&lt;p&gt;© 2025 Me&lt;/p&gt;&lt;/footer&gt;" class="w-full h-60 mt-4 border" sandbox></iframe>
+    </div>
+
+    <section>
+      <label class="inline-flex items-center space-x-2">
+        <input type="checkbox" id="lessonComplete" class="form-checkbox text-blue-500" onchange="saveProgress()" />
+        <span>Mark Lesson as Complete</span>
+      </label>
+    </section>
+
+    <div class="bg-white p-6 rounded-lg shadow">
+      <h3 class="text-2xl font-semibold mb-4">Quiz: Test Your Knowledge!</h3>
+      <form id="quizForm">
+        <div class="mb-4">
+          <label class="block mb-2">1. Which tag is used to wrap the main content?</label>
+          <select class="w-full p-2 border rounded" name="q1">
+            <option value="">Select an answer</option>
+            <option value="a">&lt;main&gt;</option>
+            <option value="b">&lt;div&gt;</option>
+            <option value="c">&lt;section&gt;</option>
+          </select>
+        </div>
+        <div class="mb-4">
+          <label class="block mb-2">2. What is the purpose of semantic tags?</label>
+          <select class="w-full p-2 border rounded" name="q2">
+            <option value="">Select an answer</option>
+            <option value="a">To make the page look prettier</option>
+            <option value="b">To add JavaScript functions</option>
+            <option value="c">To describe content meaningfully</option>
+          </select>
+        </div>
+        <button type="button" onclick="checkQuiz()" class="bg-pink-400 hover:bg-pink-500 text-white px-4 py-2 rounded-full font-semibold">Submit Answers</button>
+        <p id="quizResult" class="mt-4 font-semibold"></p>
+      </form>
+    </div>
+  </section>
+
+  <nav class="flex justify-between text-blue-500 mt-8">
+    <a href="lesson6.html" class="hover:underline">&larr; Previous Lesson</a>
+    <a href="lesson8.html" class="hover:underline">Next Lesson &rarr;</a>
+  </nav>
+
+  <footer class="bg-purple-100 text-center p-4 mt-10">
+    <p class="text-sm text-gray-600">&copy; 2025 WebBloom</p>
+  </footer>
+
+  <script>
+    function checkQuiz() {
+      const form = document.forms.quizForm;
+      let score = 0;
+      if (form.q1.value === 'a') score++;
+      if (form.q2.value === 'c') score++;
+      const result = document.getElementById('quizResult');
+      result.textContent = `You scored ${score}/2!`;
+    }
+
+    function saveProgress() {
+      localStorage.setItem('lesson7Complete', document.getElementById('lessonComplete').checked);
+    }
+
+    window.onload = function() {
+      document.getElementById('lessonComplete').checked = localStorage.getItem('lesson7Complete') === 'true';
+    }
+
+    function toggleDarkMode() {
+      document.getElementById('page').classList.toggle('dark-mode');
+    }
+  </script>
+
+</body>
+</html>
