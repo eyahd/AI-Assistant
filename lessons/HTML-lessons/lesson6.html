@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Lesson 6: HTML Tables – WebBloom</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <style>
+    body { font-family: 'Poppins', sans-serif; }
+    @media print { .no-print { display: none; } }
+  </style>
+</head>
+<body class="bg-white text-gray-800 transition-colors duration-300" id="page">
+
+<header class="bg-purple-100 shadow sticky top-0 z-50 flex justify-between items-center p-4">
+  <div class="flex items-center space-x-4">
+    <button onclick="toggleDarkMode()" class="bg-gray-200 px-3 py-1 rounded">🌓</button>
+  </div>
+</header>
+
+<main class="p-6 max-w-4xl mx-auto space-y-12">
+  <section class="text-center py-16">
+    <div class="max-w-2xl mx-auto">
+      <h2 class="text-4xl font-bold mb-4">Lesson 6: HTML Tables</h2>
+      <p class="text-lg mb-6">Learn how to display and organize tabular data with HTML tables.</p>
+    </div>
+  </section>
+
+  <section class="py-10 max-w-5xl mx-auto px-4">
+    <div class="bg-white p-6 rounded-lg shadow mb-6">
+      <h3 class="text-2xl font-semibold mb-4">Basic Table Structure</h3>
+      <p class="mb-4">Tables are created using <code>&lt;table&gt;</code>, <code>&lt;tr&gt;</code> (table row), <code>&lt;td&gt;</code> (table data), and <code>&lt;th&gt;</code> (table header).</p>
+      <pre class="bg-gray-100 p-4 rounded"><code>&lt;table&gt;
+  &lt;tr&gt;
+    &lt;th&gt;Name&lt;/th&gt;
+    &lt;th&gt;Age&lt;/th&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+    &lt;td&gt;Alice&lt;/td&gt;
+    &lt;td&gt;24&lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/table&gt;</code></pre>
+    </div>
+
+    <div class="bg-white p-6 rounded-lg shadow mb-6">
+      <h3 class="text-2xl font-semibold mb-4">Example in Action</h3>
+      <iframe srcdoc="&lt;table border='1' cellpadding='10'&gt;&lt;tr&gt;&lt;th&gt;Name&lt;/th&gt;&lt;th&gt;Email&lt;/th&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;John&lt;/td&gt;&lt;td&gt;john@example.com&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;" class="w-full h-40 mt-4 border" sandbox></iframe>
+    </div>
+
+    <section>
+      <label class="inline-flex items-center space-x-2">
+        <input type="checkbox" id="lessonComplete" class="form-checkbox text-blue-500" onchange="saveProgress()" />
+        <span>Mark Lesson as Complete</span>
+      </label>
+    </section>
+
+    <div class="bg-white p-6 rounded-lg shadow">
+      <h3 class="text-2xl font-semibold mb-4">Quiz: Test Your Knowledge!</h3>
+      <form id="quizForm">
+        <div class="mb-4">
+          <label class="block mb-2">1. What tag creates a new row?</label>
+          <select class="w-full p-2 border rounded" name="q1">
+            <option value="">Select an answer</option>
+            <option value="a">&lt;td&gt;</option>
+            <option value="b">&lt;tr&gt;</option>
+            <option value="c">&lt;th&gt;</option>
+          </select>
+        </div>
+        <div class="mb-4">
+          <label class="block mb-2">2. What tag is used for table headers?</label>
+          <select class="w-full p-2 border rounded" name="q2">
+            <option value="">Select an answer</option>
+            <option value="a">&lt;th&gt;</option>
+            <option value="b">&lt;tr&gt;</option>
+            <option value="c">&lt;caption&gt;</option>
+          </select>
+        </div>
+        <button type="button" onclick="checkQuiz()" class="bg-pink-400 hover:bg-pink-500 text-white px-4 py-2 rounded-full font-semibold">Submit Answers</button>
+        <p id="quizResult" class="mt-4 font-semibold"></p>
+      </form>
+    </div>
+  </section>
+
+  <nav class="flex justify-between text-blue-500 mt-8">
+    <a href="lesson5.html" class="hover:underline">&larr; Previous Lesson</a>
+    <a href="lesson7.html" class="hover:underline">Next Lesson &rarr;</a>
+  </nav>
+
+  <footer class="bg-purple-100 text-center p-4 mt-10">
+    <p class="text-sm text-gray-600">&copy; 2025 WebBloom</p>
+  </footer>
+
+  <script>
+    function checkQuiz() {
+      const form = document.forms.quizForm;
+      let score = 0;
+      if (form.q1.value === 'b') score++;
+      if (form.q2.value === 'a') score++;
+      const result = document.getElementById('quizResult');
+      result.textContent = `You scored ${score}/2!`;
+    }
+
+    function saveProgress() {
+      localStorage.setItem('lesson6Complete', document.getElementById('lessonComplete').checked);
+    }
+
+    window.onload = function() {
+      document.getElementById('lessonComplete').checked = localStorage.getItem('lesson6Complete') === 'true';
+    }
+
+    function toggleDarkMode() {
+      document.getElementById('page').classList.toggle('dark-mode');
+    }
+  </script>
+
+</body>
+</html>
