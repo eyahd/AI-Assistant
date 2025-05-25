@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>CSS Lesson 7 – WebBloom</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    body { font-family: 'Poppins', sans-serif; }
+    .dark-mode { background-color: #1a202c; color: #f7fafc; }
+  </style>
+</head>
+<body class="bg-white text-gray-800 transition-colors duration-300" id="page">
+
+  <!-- Header -->
+  <header class="bg-pink-100 shadow sticky top-0 z-50 flex justify-between items-center p-4">
+    <h1 class="text-2xl font-bold text-pink-500">CSS Lesson 7</h1>
+    <div class="flex items-center space-x-4">
+      <a href="learn-css.html" class="text-sm hover:text-pink-700">Back to Lessons</a>
+      <button onclick="toggleDarkMode()" class="bg-gray-200 px-3 py-1 rounded">🌓</button>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <section class="p-6 max-w-4xl mx-auto space-y-8">
+
+    <!-- Lesson -->
+    <div>
+      <h2 class="text-3xl font-semibold mb-2">CSS Variables</h2>
+      <p class="mb-4">CSS variables (also known as custom properties) let you store reusable values and keep your stylesheets cleaner and easier to maintain.</p>
+      <ul class="list-disc pl-5 space-y-1">
+        <li><strong>Declaring a variable:</strong> <code>--main-color: pink;</code> (inside a selector)</li>
+        <li><strong>Using a variable:</strong> <code>color: var(--main-color);</code></li>
+        <li><strong>Scope:</strong> Variables can be global (in <code>:root</code>) or local.</li>
+        <li><strong>Benefits:</strong> Easier theme management, consistent styling, clean code.</li>
+      </ul>
+    </div>
+
+    <!-- Try-it-yourself Editor -->
+    <div class="bg-gray-100 p-4 rounded">
+      <h3 class="text-xl font-semibold mb-2">Try it Yourself</h3>
+      <textarea id="codeEditor" class="w-full h-64 p-2 font-mono border rounded mb-2">
+<style>
+  :root {
+    --main-bg: #ffe4e6;
+    --text-color: #333;
+    --accent: #e11d48;
+  }
+
+  body {
+    background-color: var(--main-bg);
+    color: var(--text-color);
+    text-align: center;
+    font-family: sans-serif;
+  }
+
+  h1 {
+    color: var(--accent);
+  }
+</style>
+
+<h1>Using CSS Variables</h1>
+<p>This is a paragraph using variables for background and text colors.</p>
+      </textarea>
+      <button onclick="runCode()" class="bg-green-500 hover:bg-green-600 text-white px-4 py-2 rounded">Run Code</button>
+      <div class="mt-4 border p-2 bg-white rounded">
+        <iframe id="preview" class="w-full h-40 border" sandbox="allow-scripts"></iframe>
+      </div>
+    </div>
+
+    <!-- Completion -->
+    <div>
+      <label class="inline-flex items-center space-x-2">
+        <input type="checkbox" id="lessonComplete" class="form-checkbox" onchange="saveProgress()" />
+        <span>Mark Lesson as Complete</span>
+      </label>
+    </div>
+
+    <!-- Quiz -->
+    <div class="bg-blue-50 p-4 rounded">
+      <h3 class="text-xl font-bold mb-4">Quick Quiz</h3>
+
+      <form id="quizForm" class="space-y-4">
+        <div>
+          <p class="font-medium">1. How do you access a CSS variable?</p>
+          <label><input type="radio" name="q1" value="a" class="mr-2">$main-color</label><br>
+          <label><input type="radio" name="q1" value="b" class="mr-2">var(--main-color)</label><br>
+          <label><input type="radio" name="q1" value="c" class="mr-2">@main-color</label>
+        </div>
+
+        <div>
+          <p class="font-medium">2. Where do you define global CSS variables?</p>
+          <label><input type="radio" name="q2" value="a" class="mr-2">body</label><br>
+          <label><input type="radio" name="q2" value="b" class="mr-2">html</label><br>
+          <label><input type="radio" name="q2" value="c" class="mr-2">:root</label>
+        </div>
+      </form>
+      <div id="quizResult" class="mt-4"></div>
+      <button onclick="gradeQuiz()" class="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded">Submit Answers</button>
+    </div>
+
+    <div class="flex justify-between">
+      <a href="css-lesson6.html" class="text-blue-500 hover:underline">&larr; Previous Lesson</a>
+      <a href="css-lesson8.html" class="text-blue-500 hover:underline">Next Lesson &rarr;</a>
+    </div>
+
+  </section>
+
+  <script>
+    function runCode() {
+      const code = document.getElementById("codeEditor").value;
+      const iframe = document.getElementById("preview");
+      iframe.srcdoc = code;
+    }
+
+    function toggleDarkMode() {
+      document.getElementById("page").classList.toggle("dark-mode");
+    }
+
+    function saveProgress() {
+      alert("Progress saved! 🎉");
+    }
+
+    function gradeQuiz() {
+      const answers = { q1: "b", q2: "c" };
+      let score = 0;
+      for (const q in answers) {
+        const selected = document.querySelector(`input[name="${q}"]:checked`);
+        if (selected && selected.value === answers[q]) score++;
+      }
+
+      const result = document.getElementById('quizResult');
+      if (score === Object.keys(answers).length) {
+        result.textContent = `✅ Great job! You got all answers right!`;
+        result.className = "text-green-600 font-semibold";
+      } else {
+        result.textContent = `❌ You got ${score} out of ${Object.keys(answers).length} correct. Try again!`;
+        result.className = "text-red-600 font-semibold";
+      }
+    }
+  </script>
+
+</body>
+</html>
