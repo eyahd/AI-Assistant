@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>CSS Lesson 6 – WebBloom</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    body { font-family: 'Poppins', sans-serif; }
+    .dark-mode { background-color: #1a202c; color: #f7fafc; }
+  </style>
+</head>
+<body class="bg-white text-gray-800 transition-colors duration-300" id="page">
+
+  <!-- Header -->
+  <header class="bg-pink-100 shadow sticky top-0 z-50 flex justify-between items-center p-4">
+    <h1 class="text-2xl font-bold text-pink-500">CSS Lesson 6</h1>
+    <div class="flex items-center space-x-4">
+      <a href="learn-css.html" class="text-sm hover:text-pink-700">Back to Lessons</a>
+      <button onclick="toggleDarkMode()" class="bg-gray-200 px-3 py-1 rounded">🌓</button>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <section class="p-6 max-w-4xl mx-auto space-y-8">
+
+    <!-- Lesson -->
+    <div>
+      <h2 class="text-3xl font-semibold mb-2">Colors, Gradients & Backgrounds</h2>
+      <p class="mb-4">Colors and backgrounds play a huge role in web design. In this lesson, you'll learn how to use solid colors, gradients, and background images effectively in your styles.</p>
+      <ul class="list-disc pl-5 space-y-1">
+        <li><strong>color:</strong> Changes the text color.</li>
+        <li><strong>background-color:</strong> Sets the background color of an element.</li>
+        <li><strong>background-image:</strong> Applies an image as the background.</li>
+        <li><strong>linear-gradient:</strong> Creates smooth transitions between colors.</li>
+        <li><strong>background-repeat / size / position:</strong> Controls how backgrounds behave.</li>
+      </ul>
+    </div>
+
+    <!-- Try-it-yourself Editor -->
+    <div class="bg-gray-100 p-4 rounded">
+      <h3 class="text-xl font-semibold mb-2">Try it Yourself</h3>
+      <textarea id="codeEditor" class="w-full h-64 p-2 font-mono border rounded mb-2">
+<style>
+  body {
+    background: linear-gradient(to right, #ff9a9e, #fad0c4);
+    color: #333;
+    font-family: Arial, sans-serif;
+    text-align: center;
+    padding: 2rem;
+  }
+
+  .box {
+    background-color: white;
+    padding: 1rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  }
+</style>
+
+<div class="box">
+  <h1>Hello Colors!</h1>
+  <p>This background uses a gradient and this box uses a white background.</p>
+</div>
+      </textarea>
+      <button onclick="runCode()" class="bg-green-500 hover:bg-green-600 text-white px-4 py-2 rounded">Run Code</button>
+      <div class="mt-4 border p-2 bg-white rounded">
+        <iframe id="preview" class="w-full h-40 border" sandbox="allow-scripts"></iframe>
+      </div>
+    </div>
+
+    <!-- Completion -->
+    <div>
+      <label class="inline-flex items-center space-x-2">
+        <input type="checkbox" id="lessonComplete" class="form-checkbox" onchange="saveProgress()" />
+        <span>Mark Lesson as Complete</span>
+      </label>
+    </div>
+
+    <!-- Quiz -->
+    <div class="bg-blue-50 p-4 rounded">
+      <h3 class="text-xl font-bold mb-4">Quick Quiz</h3>
+
+      <form id="quizForm" class="space-y-4">
+        <div>
+          <p class="font-medium">1. What does the <code>background-color</code> property do?</p>
+          <label><input type="radio" name="q1" value="a" class="mr-2">Changes text color</label><br>
+          <label><input type="radio" name="q1" value="b" class="mr-2">Changes background color</label><br>
+          <label><input type="radio" name="q1" value="c" class="mr-2">Adds border</label>
+        </div>
+
+        <div>
+          <p class="font-medium">2. Which value type creates smooth color transitions?</p>
+          <label><input type="radio" name="q2" value="a" class="mr-2">url()</label><br>
+          <label><input type="radio" name="q2" value="b" class="mr-2">linear-gradient</label><br>
+          <label><input type="radio" name="q2" value="c" class="mr-2">font-style</label>
+        </div>
+      </form>
+      <div id="quizResult" class="mt-4"></div>
+      <button onclick="gradeQuiz()" class="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded">Submit Answers</button>
+    </div>
+
+    <div class="flex justify-between">
+      <a href="css-lesson5.html" class="text-blue-500 hover:underline">&larr; Previous Lesson</a>
+      <a href="css-lesson7.html" class="text-blue-500 hover:underline">Next Lesson &rarr;</a>
+    </div>
+
+  </section>
+
+  <script>
+    function runCode() {
+      const code = document.getElementById("codeEditor").value;
+      const iframe = document.getElementById("preview");
+      iframe.srcdoc = code;
+    }
+
+    function toggleDarkMode() {
+      document.getElementById("page").classList.toggle("dark-mode");
+    }
+
+    function saveProgress() {
+      alert("Progress saved! 🎉");
+    }
+
+    function gradeQuiz() {
+      const answers = { q1: "b", q2: "b" };
+      let score = 0;
+      for (const q in answers) {
+        const selected = document.querySelector(`input[name="${q}"]:checked`);
+        if (selected && selected.value === answers[q]) score++;
+      }
+
+      const result = document.getElementById('quizResult');
+      if (score === Object.keys(answers).length) {
+        result.textContent = `✅ Great job! You got all answers right!`;
+        result.className = "text-green-600 font-semibold";
+      } else {
+        result.textContent = `❌ You got ${score} out of ${Object.keys(answers).length} correct. Try again!`;
+        result.className = "text-red-600 font-semibold";
+      }
+    }
+  </script>
+
+</body>
+</html>
