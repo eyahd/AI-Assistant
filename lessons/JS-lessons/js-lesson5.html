@@ -40,15 +40,17 @@
     <div class="bg-gray-100 p-4 rounded">
       <h3 class="text-xl font-semibold mb-2">Try it Yourself</h3>
       <textarea id="codeEditor" class="w-full h-64 p-2 font-mono border rounded mb-2">
-const person = {
-  name: "Alice",
-  age: 25,
-  greet: function() {
-    return "Hello, my name is " + this.name;
-  }
-};
-
-document.body.innerHTML = `<p>${person.greet()}</p>`;
+<h2>Hello from JS Objects</h2>
+<script>
+  const person = {
+    name: "Alice",
+    age: 25,
+    greet: function() {
+      document.body.innerHTML += "<p>Hello, my name is " + this.name + ".</p>";
+    }
+  };
+  person.greet();
+</script>
       </textarea>
       <button onclick="runCode()" class="bg-green-500 hover:bg-green-600 text-white px-4 py-2 rounded">Run Code</button>
       <div class="mt-4 border p-2 bg-white rounded">
@@ -88,28 +90,40 @@ document.body.innerHTML = `<p>${person.greet()}</p>`;
       <button onclick="gradeQuiz()" class="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded">Submit Answers</button>
     </div>
 
-     <div class="flex justify-between">
+    <!-- Navigation -->
+    <div class="flex justify-between">
       <a href="lesson4.html" class="text-blue-500 hover:underline">&larr; Previous Lesson</a>
       <a href="lesson6.html" class="text-blue-500 hover:underline">Next Lesson &rarr;</a>
     </div>
 
   </section>
 
+  <!-- Script -->
   <script>
+    // Code Runner
     function runCode() {
-      const code = document.getElementById("codeEditor").value;
-      const iframe = document.getElementById("preview");
-      iframe.srcdoc = `<script>${code}<\/script>`;
+      const code = document.getElementById('codeEditor').value;
+      const iframe = document.getElementById('preview');
+      iframe.srcdoc = code;
     }
 
-    function toggleDarkMode() {
-      document.getElementById("page").classList.toggle("dark-mode");
-    }
-
+    // Fortschritt speichern
     function saveProgress() {
-      localStorage.setItem("lesson5Complete", document.getElementById("lessonComplete").checked);
+      localStorage.setItem('lesson5Complete', document.getElementById('lessonComplete').checked);
     }
 
+    // Fortschritt laden
+    window.onload = function() {
+      document.getElementById('lessonComplete').checked =
+        localStorage.getItem('lesson5Complete') === 'true';
+    }
+
+    // Dark Mode
+    function toggleDarkMode() {
+      document.getElementById('page').classList.toggle('dark-mode');
+    }
+
+    // Quiz Bewertung
     function gradeQuiz() {
       const answers = { q1: "b", q2: "a" };
       let score = 0;
