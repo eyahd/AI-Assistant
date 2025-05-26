@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Lesson 7: JavaScript Operators – WebBloom</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    body { font-family: 'Poppins', sans-serif; }
+    .dark-mode { background-color: #1a202c; color: #f7fafc; }
+  </style>
+</head>
+<body class="bg-white text-gray-800 transition-colors duration-300" id="page">
+
+<!-- Header -->
+<header class="bg-pink-100 shadow sticky top-0 z-50 flex justify-between items-center p-4">
+  <h1 class="text-2xl font-bold text-pink-500">JavaScript Lesson 7</h1>
+  <div class="flex items-center space-x-4">
+    <a href="../learn-js.html" class="text-sm hover:text-pink-700">Back to Lessons</a>
+    <button onclick="toggleDarkMode()" class="bg-gray-200 px-3 py-1 rounded">🌓</button>
+  </div>
+</header>
+
+<!-- Main Content -->
+<section class="p-6 max-w-4xl mx-auto space-y-8">
+
+  <!-- Lesson -->
+  <div>
+    <h2 class="text-3xl font-semibold mb-2">JavaScript Operators</h2>
+    <p class="mb-4">Operators let you perform calculations and logic in JavaScript. Let’s explore the most common ones.</p>
+    <ul class="list-disc pl-5 space-y-1">
+      <li><strong>Arithmetic Operators:</strong> +, -, *, /, %</li>
+      <li><strong>Comparison Operators:</strong> ===, !==, >, &lt;, >=, <=</li>
+      <li><strong>Logical Operators:</strong> &&, ||, !</li>
+      <li><strong>Assignment Operators:</strong> =, +=, -=, *=</li>
+    </ul>
+  </div>
+
+  <!-- Try-it-yourself Editor -->
+  <div class="bg-gray-100 p-4 rounded">
+    <h3 class="text-xl font-semibold mb-2">Try it Yourself</h3>
+    <textarea id="codeEditor" class="w-full h-64 p-2 font-mono border rounded mb-2">
+<h2>Operator Example</h2>
+<script>
+  let a = 10;
+  let b = 5;
+  document.body.innerHTML += `
+    <p>Arithmetic: a + b = ${a + b}</p>
+    <p>Comparison: a > b = ${a > b}</p>
+    <p>Logical: a > 5 && b < 10 = ${a > 5 && b < 10}</p>
+  `;
+</script>
+    </textarea>
+    <button onclick="runCode()" class="bg-green-500 hover:bg-green-600 text-white px-4 py-2 rounded">Run Code</button>
+    <div class="mt-4 border p-2 bg-white rounded">
+      <iframe id="preview" class="w-full h-40 border" sandbox="allow-scripts"></iframe>
+    </div>
+  </div>
+
+  <!-- Completion -->
+  <div>
+    <label class="inline-flex items-center space-x-2">
+      <input type="checkbox" id="lessonComplete" class="form-checkbox" onchange="saveProgress()" />
+      <span>Mark Lesson as Complete</span>
+    </label>
+  </div>
+
+  <!-- Quiz -->
+  <div class="bg-blue-50 p-4 rounded">
+    <h3 class="text-xl font-bold mb-4">Quick Quiz</h3>
+    <form id="quizForm" class="space-y-4">
+      <div>
+        <p class="font-medium">1. What does the operator `===` do?</p>
+        <label><input type="radio" name="q1" value="a" class="mr-2">Assign a value</label><br>
+        <label><input type="radio" name="q1" value="b" class="mr-2">Strictly compare value and type</label><br>
+        <label><input type="radio" name="q1" value="c" class="mr-2">Add two values</label>
+      </div>
+      <div>
+        <p class="font-medium">2. What is the result of: <code>(5 > 2 && 3 &lt; 4)</code>?</p>
+        <label><input type="radio" name="q2" value="a" class="mr-2">false</label><br>
+        <label><input type="radio" name="q2" value="b" class="mr-2">true</label><br>
+        <label><input type="radio" name="q2" value="c" class="mr-2">undefined</label>
+      </div>
+    </form>
+    <div id="quizResult" class="mt-4"></div>
+    <button onclick="gradeQuiz()" class="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded">Submit Answers</button>
+  </div>
+
+  <!-- Navigation -->
+  <div class="flex justify-between">
+    <a href="lesson6.html" class="text-blue-500 hover:underline">&larr; Previous Lesson</a>
+    <a href="lesson8.html" class="text-blue-500 hover:underline">Next Lesson &rarr;</a>
+  </div>
+
+</section>
+
+<!-- Scripts -->
+<script>
+  function runCode() {
+    const code = document.getElementById("codeEditor").value;
+    const iframe = document.getElementById("preview");
+    iframe.srcdoc = code;
+  }
+
+  function toggleDarkMode() {
+    document.getElementById("page").classList.toggle("dark-mode");
+  }
+
+  function saveProgress() {
+    localStorage.setItem('lesson7Complete', document.getElementById('lessonComplete').checked);
+  }
+
+  window.onload = function() {
+    document.getElementById('lessonComplete').checked = localStorage.getItem('lesson7Complete') === 'true';
+  }
+
+  function gradeQuiz() {
+    const answers = { q1: "b", q2: "b" };
+    let score = 0;
+    for (const q in answers) {
+      const selected = document.querySelector(`input[name="${q}"]:checked`);
+      if (selected && selected.value === answers[q]) score++;
+    }
+    const result = document.getElementById("quizResult");
+    if (score === Object.keys(answers).length) {
+      result.textContent = "✅ Great job! You got all answers right!";
+      result.className = "text-green-600 font-semibold";
+    } else {
+      result.textContent = `❌ You got ${score} out of ${Object.keys(answers).length} correct. Try again!`;
+      result.className = "text-red-600 font-semibold";
+    }
+  }
+</script>
+
+</body>
+</html>
