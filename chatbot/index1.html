@@ -2,18 +2,174 @@
 <html lang="de">
 <head>
     <meta charset="UTF-8">
-    <title>Web-Tutor KI-Chatbot</title>
-    <style>
-        body { font-family: Arial; padding: 20px; }
-        #chatbox { border: 1px solid #ccc; padding: 10px; height: 400px; overflow-y: auto; }
-        .message { margin-bottom: 10px; }
-        .user { color: blue; }
-        .bot { color: green; }
-    </style>
+    <title>WebTutor</title>
+<style>
+    body {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        padding: 20px;
+        margin: 0;
+        transition: background-color 0.3s, color 0.3s;
+    }
+
+    body.light {
+        background-color: #f5f7fa;
+        color: #000;
+    }
+
+    body.dark {
+        background-color: #121212;
+        color: #ffffff;
+    }
+
+    h2 {
+        text-align: center;
+        margin-bottom: 20px;
+    }
+
+    #chatbox {
+        border-radius: 10px;
+        padding: 15px;
+        height: 400px;
+        overflow-y: auto;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+        margin-bottom: 20px;
+        display: flex;
+        flex-direction: column;
+    }
+
+    body.light #chatbox {
+        background-color: #ffffff;
+        border: 1px solid #ccc;
+    }
+
+    body.dark #chatbox {
+        background-color: #1e1e1e;
+        border: 1px solid #333;
+    }
+
+    .message {
+        margin-bottom: 15px;
+        padding: 10px 15px;
+        border-radius: 10px;
+        max-width: 80%;
+        word-wrap: break-word;
+    }
+
+    .user {
+        background-color: #b1a0d1;
+        color: #e8f5e9;
+        align-self: flex-end;
+        text-align: right;
+    }
+
+    .bot {
+        background-color: #a7d2e7;
+        color: #ffffff;
+        align-self: flex-start;
+        text-align: left;
+    }
+
+    #chat-form {
+        display: flex;
+        gap: 10px;
+    }
+
+    #user-input {
+        flex-grow: 1;
+        padding: 10px;
+        font-size: 16px;
+        border-radius: 8px;
+        border: 1px solid #ccc;
+    }
+
+    body.dark #user-input {
+        background-color: #1e1e1e;
+        color: #ffffff;
+        border: 1px solid #444;
+    }
+
+    button {
+        padding: 10px 20px;
+        font-size: 16px;
+        background-color: #cd92c2;
+        color: #000;
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+    }
+
+    button:hover {
+        background-color: #e6a0d0;
+    }
+
+    #typing-indicator {
+        font-style: italic;
+        color: #aaaaaa;
+        margin-bottom: 10px;
+        display: none;
+    }
+    /* Toggle-Switch */
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 50px;
+    height: 26px;
+}
+
+.switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-color: #ccc;
+    transition: 0.4s;
+    border-radius: 26px;
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 20px;
+    width: 20px;
+    left: 4px;
+    bottom: 3px;
+    background-color: white;
+    transition: 0.4s;
+    border-radius: 50%;
+}
+
+input:checked + .slider {
+    background-color: #e9b8de;
+}
+
+input:checked + .slider:before {
+    transform: translateX(24px);
+}
+
+</style>
+
+
 </head>
 <body>
 
-<h2>💬 KI-Tutor für Webprogrammierung</h2>
+<h2>
+  WebTutor
+  <label class="switch" style="float: right;">
+    <input type="checkbox" id="toggle-theme">
+    <span class="slider"></span>
+  </label>
+</h2>
+
+
 
 <div id="chatbox"></div>
 
@@ -26,12 +182,59 @@
 const form = document.getElementById('chat-form');
 const input = document.getElementById('user-input');
 const chatbox = document.getElementById('chatbox');
+const toggleTheme = document.getElementById('toggle-theme');
 
+// Typing-Indikator
+const typingIndicator = document.createElement('div');
+typingIndicator.id = 'typing-indicator';
+typingIndicator.innerText = 'Tutor schreibt...';
+chatbox.appendChild(typingIndicator);
+
+// Theme laden
+function loadTheme() {
+    const theme = localStorage.getItem('theme') || 'dark';
+    document.body.className = theme;
+    document.getElementById('toggle-theme').checked = theme === 'light';
+}
+
+// Theme-Umschalter mit Switch
+document.getElementById('toggle-theme').addEventListener('change', (e) => {
+    const theme = e.target.checked ? 'light' : 'dark';
+    document.body.className = theme;
+    localStorage.setItem('theme', theme);
+});
+
+
+// Chatverlauf laden
+function loadChat() {
+    const saved = localStorage.getItem('chat');
+    if (saved) chatbox.innerHTML = saved;
+    chatbox.appendChild(typingIndicator);
+    chatbox.scrollTop = chatbox.scrollHeight;
+}
+
+// Verlauf speichern
+function saveChat() {
+    localStorage.setItem('chat', chatbox.innerHTML);
+}
+
+// Theme-Umschalter
+toggleTheme.addEventListener('click', () => {
+    document.body.classList.toggle('dark');
+    document.body.classList.toggle('light');
+    const theme = document.body.classList.contains('dark') ? 'dark' : 'light';
+    localStorage.setItem('theme', theme);
+});
+
+// Chat absenden
 form.addEventListener('submit', async function(e) {
     e.preventDefault();
     const userMessage = input.value;
     chatbox.innerHTML += `<div class="message user"><strong>Du:</strong> ${userMessage}</div>`;
     input.value = '';
+    typingIndicator.style.display = 'block';
+
+    chatbox.scrollTop = chatbox.scrollHeight;
 
     const response = await fetch('chat.php', {
         method: 'POST',
@@ -40,10 +243,20 @@ form.addEventListener('submit', async function(e) {
     });
 
     const data = await response.json();
+
+    typingIndicator.style.display = 'none';
     chatbox.innerHTML += `<div class="message bot"><strong>Tutor:</strong> ${data.reply}</div>`;
     chatbox.scrollTop = chatbox.scrollHeight;
+
+    saveChat();
 });
+
+// Init
+loadTheme();
+loadChat();
 </script>
+
+
 
 </body>
 </html>
