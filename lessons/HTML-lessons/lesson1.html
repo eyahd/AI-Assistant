@@ -42,14 +42,6 @@
       </div>
     </div>
 
-    <!-- Lesson Completion -->
-    <div>
-      <label class="inline-flex items-center space-x-2">
-        <input type="checkbox" id="lessonComplete" class="form-checkbox" onchange="saveProgress()" />
-        <span>Mark Lesson as Complete</span>
-      </label>
-    </div>
-
     <!-- Quiz/Test -->
     <div class="bg-blue-50 p-4 rounded">
       <h3 class="text-xl font-bold mb-4">Quick Quiz</h3>
@@ -79,8 +71,16 @@
 
     <!-- Navigation -->
     <div class="flex justify-between">
-      <a href="learn-html.html" class="text-blue-500 hover:underline">&larr; Back to Home Page</a>
+      <a href="../learn-html.html" class="text-blue-500 hover:underline">&larr; Back to HTML lessons Page</a>
       <a href="lesson2.html" class="text-blue-500 hover:underline">Next Lesson &rarr;</a>
+    </div>
+
+    <!-- Lesson Completion -->
+    <div class="text-center mt-10">
+      <button id="completeBtn" onclick="updateProgress('Lesson 1', 100)"
+        class="bg-green-500 text-white px-6 py-3 rounded opacity-50 cursor-not-allowed" disabled>
+        ✅ Mark as Completed
+      </button>
     </div>
   </section>
 
@@ -91,27 +91,21 @@
 
   <!-- JavaScript -->
   <script>
-    // Code Runner
-    function runCode() {
-      const code = document.getElementById('codeEditor').value;
-      const iframe = document.getElementById('preview');
-      iframe.srcdoc = code;
-    }
+    let quizPassed = false;
+    let codeRun = false;
 
-    // Progress Tracking
-    function saveProgress() {
-      localStorage.setItem('lesson1Complete', document.getElementById('lessonComplete').checked);
-    }
-    window.onload = function() {
-      document.getElementById('lessonComplete').checked = localStorage.getItem('lesson1Complete') === 'true';
-    }
-
-    // Dark Mode
     function toggleDarkMode() {
       document.getElementById('page').classList.toggle('dark-mode');
     }
 
-    // Quiz Grading
+    function runCode() {
+      const code = document.getElementById('codeEditor').value;
+      const iframe = document.getElementById('preview');
+      iframe.srcdoc = code;
+      codeRun = true;
+      enableCompleteButton();
+    }
+
     function gradeQuiz() {
       const answers = {
         q1: "a",
@@ -127,12 +121,47 @@
       if (score === Object.keys(answers).length) {
         result.textContent = `✅ Great job! You got all answers right!`;
         result.className = "text-green-600 font-semibold";
+        quizPassed = true;
+        enableCompleteButton();
       } else {
         result.textContent = `❌ You got ${score} out of ${Object.keys(answers).length} correct. Try again!`;
         result.className = "text-red-600 font-semibold";
+        quizPassed = false;
       }
     }
+
+    function enableCompleteButton() {
+      const btn = document.getElementById('completeBtn');
+      if (quizPassed && codeRun) {
+        btn.disabled = false;
+        btn.classList.remove('opacity-50', 'cursor-not-allowed');
+      }
+    }
+
+    
+function updateProgress(topic, progress) {
+  fetch('../update_progress.php', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/x-www-form-urlencoded'
+    },
+    body: `topic=${encodeURIComponent(topic)}&progress=${progress}`
+  })
+  .then(response => response.text())
+  .then(result => {
+    console.log(result); // optional feedback
+  });
+}
+
+
+window.onload = function () {
+  updateProgress('Lesson 1', 20); // Optional: mark as started
+};
+
+
   </script>
+
+
 
 </body>
 </html>
