@@ -1,0 +1,77 @@
+body {
+  font-family: 'Comic Sans MS', cursive, sans-serif;
+  background: linear-gradient(135deg, #f6d365, #fda085, #fbc2eb, #a6c1ee);
+  background-size: 600% 600%;
+  animation: gradientShift 15s ease infinite;
+  margin: 0;
+  padding: 0;
+  color: #333;
+}
+
+/* Only center main content, not nav */
+main {
+  text-align: center;
+  padding: 2rem;
+}
+
+nav {
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+  padding: 0.5rem 1rem;
+  width: 100%;
+}
+
+nav a {
+  text-decoration: none;
+  font-weight: bold;
+  color: #333;
+  transition: color 0.3s;
+}
+
+nav a:hover {
+  color: #0077cc;
+}
+
+.categories {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
+.flashcard {
+  text-decoration: none;
+  padding: 1.2rem 2rem;
+  font-size: 1.2rem;
+  color: #fff;
+  border-radius: 1rem;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+  transition: transform 0.2s, box-shadow 0.3s;
+  background: linear-gradient(145deg, #ff758c, #ff7eb3);
+  animation: float 2.5s ease-in-out infinite;
+  display: inline-block;
+}
+
+.flashcard:hover {
+  transform: scale(1.05) rotate(2deg);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+}
+
+.html { background: linear-gradient(145deg, #2196f3, #6ec6ff); }
+.css { background: linear-gradient(145deg, #9c27b0, #e1bee7); }
+.js { background: linear-gradient(145deg, #ff9800, #ffc107); }
+.add { background: linear-gradient(145deg, #4caf50, #a5d6a7); }
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-5px); }
+}
+
+@keyframes gradientShift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}

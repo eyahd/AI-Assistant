@@ -1,0 +1,38 @@
+[
+    {
+        "question": "Was ist JavaScript?",
+        "answer": "Eine Skriptsprache, die verwendet wird, um Webseiten dynamisch und interaktiv zu machen.",
+        "interval": 1,
+        "due": 0
+    },
+    {
+        "question": "Wie deklariert man eine Variable in JavaScript?",
+        "answer": "Mit let, const oder var (z. B. let zahl = 5;)",
+        "interval": 1,
+        "due": 0
+    },
+    {
+        "question": "Was ist ein Array?",
+        "answer": "Eine Datenstruktur, die mehrere Werte unter einem Namen speichern kann, z. B. [1, 2, 3].",
+        "interval": 1,
+        "due": 0
+    },
+    {
+        "question": "Was macht addEventListener()?",
+        "answer": "Es registriert eine Funktion als Reaktion auf ein bestimmtes Ereignis, z. B. einen Klick.",
+        "interval": 1,
+        "due": 0
+    },
+    {
+        "question": "Was ist der Unterschied zwischen == und ===?",
+        "answer":  "== vergleicht nur den Wert, === vergleicht Wert und Typ.",
+        "interval": 1,
+        "due": 0
+    },
+    {
+        "question": "Wie schreibt man eine Funktion?",
+        "answer": "function begruessung() {\n  console.log(\"Hallo, Welt!\");\n}",
+        "interval": 1,
+        "due": 0
+    }
+]

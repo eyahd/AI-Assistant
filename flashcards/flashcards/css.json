@@ -1,0 +1,38 @@
+[
+    {
+        "question": "What is CSS?",
+        "answer": "CSS (Cascading Style Sheets) is a language used to style and format web pages. While HTML structures content, CSS controls the design, layout, colors, fonts, and animations.",
+        "interval": 2,
+        "due": 1750071482
+    },
+    {
+        "question": "What does 'flexbox' do in CSS?",
+        "answer": "Flexbox is a layout model that allows elements to align and distribute space efficiently within a container\u2014even when their sizes are dynamic or unknown.",
+        "interval": 1,
+        "due": 1749985084
+    },
+    {
+        "question": "How do you apply a background color in CSS?",
+        "answer": "You use the 'background-color' property in CSS, like this: 'background-color: blue;' to set the background color of an element.",
+        "interval": 1,
+        "due": 0
+    },
+    {
+        "question": "What is the difference between 'absolute' and 'relative' positioning in CSS?",
+        "answer": "Relative positioning moves an element based on its original position, while absolute positioning removes it from the normal document flow and positions it relative to its closest positioned ancestor.",
+        "interval": 1,
+        "due": 0
+    },
+    {
+        "question": "What does 'z-index' control in CSS?",
+        "answer": "The 'z-index' property controls the stack order of elements. A higher value brings an element to the front, while a lower value moves it behind other elements.",
+        "interval": 1,
+        "due": 0
+    },
+    {
+        "question": "How do you create a CSS animation?",
+        "answer": "Use '@keyframes' to define the animation and 'animation' property to apply it to an element, like this: '@keyframes fadeIn { from {opacity: 0;} to {opacity: 1;} }'.",
+        "interval": 1,
+        "due": 0
+    }
+]
