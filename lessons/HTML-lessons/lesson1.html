@@ -12,7 +12,7 @@
 </head>
 <body class="bg-white text-gray-800 transition-colors duration-300" id="page">
 
-  <!-- Header -->
+ 
   <header class="bg-pink-100 shadow sticky top-0 z-50 flex justify-between items-center p-4">
     <h1 class="text-2xl font-bold text-pink-500">HTML Lesson 1</h1>
     <div class="flex items-center space-x-4">
@@ -20,16 +20,15 @@
     </div>
   </header>
 
-  <!-- Main Section -->
   <section class="p-6 max-w-4xl mx-auto space-y-8">
 
-    <!-- Lesson Content -->
+   
     <div>
       <h2 class="text-3xl font-semibold mb-2">Introduction to HTML</h2>
       <p class="mb-4">HTML stands for HyperText Markup Language. It's the structure of the web.</p>
     </div>
 
-    <!-- Try-it-yourself Editor -->
+ 
     <div class="bg-gray-100 p-4 rounded">
       <h3 class="text-xl font-semibold mb-2">Try it Yourself</h3>
       <textarea id="codeEditor" class="w-full h-48 p-2 font-mono border rounded mb-2">
@@ -42,12 +41,12 @@
       </div>
     </div>
 
-    <!-- Quiz/Test -->
+   
     <div class="bg-blue-50 p-4 rounded">
       <h3 class="text-xl font-bold mb-4">Quick Quiz</h3>
 
       <form id="quizForm" class="space-y-4">
-        <!-- Question 1 -->
+       
         <div>
           <p class="font-medium">1. What does HTML stand for?</p>
           <label><input type="radio" name="q1" value="a" class="mr-2">HyperText Markup Language</label><br>
@@ -55,7 +54,7 @@
           <label><input type="radio" name="q1" value="c" class="mr-2">HighText Machine Language</label>
         </div>
 
-        <!-- Question 2 -->
+      
         <div>
           <p class="font-medium">2. Which tag is used for the largest heading?</p>
           <label><input type="radio" name="q2" value="a" class="mr-2">&lt;h6&gt;</label><br>
@@ -69,7 +68,7 @@
       <div id="quizResult" class="mt-4 font-semibold"></div>
     </div>
 
-    <!-- Navigation -->
+ 
     <div class="flex justify-between">
       <a href="../learn-html.html" class="text-blue-500 hover:underline">&larr; Back to HTML lessons Page</a>
       <a href="lesson2.html" class="text-blue-500 hover:underline">Next Lesson &rarr;</a>
@@ -84,12 +83,12 @@
     </div>
   </section>
 
-  <!-- Footer -->
+
   <footer class="bg-pink-100 text-center p-4 mt-10">
     <p class="text-sm text-gray-600">&copy; 2025 WebBloom</p>
   </footer>
 
-  <!-- JavaScript -->
+ 
   <script>
     let quizPassed = false;
     let codeRun = false;
@@ -149,13 +148,13 @@ function updateProgress(topic, progress) {
   })
   .then(response => response.text())
   .then(result => {
-    console.log(result); // optional feedback
+    console.log(result); 
   });
 }
 
 
 window.onload = function () {
-  updateProgress('Lesson 1', 20); // Optional: mark as started
+  updateProgress('Lesson 1', 20); 
 };
 
 
