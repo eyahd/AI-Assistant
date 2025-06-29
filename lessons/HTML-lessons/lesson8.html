@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>HTML Lesson 8 – WebBloom</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <style>
+    body { font-family: 'Poppins', sans-serif; }
+    .dark-mode { background-color: #1a202c; color: #f7fafc; }
+  </style>
+</head>
+<body class="bg-white text-gray-800 transition-colors duration-300" id="page">
+
+  <header class="bg-pink-100 shadow sticky top-0 z-50 flex justify-between items-center p-4">
+    <h1 class="text-2xl font-bold text-pink-500">HTML Lesson 8</h1>
+    <div class="flex items-center space-x-4">
+      <button onclick="toggleDarkMode()" class="bg-gray-200 px-3 py-1 rounded">🌓</button>
+    </div>
+  </header>
+
+  <section class="p-6 max-w-4xl mx-auto space-y-8">
+
+    <div>
+      <h2 class="text-3xl font-semibold mb-2">Multimedia in HTML</h2>
+      <p class="mb-4">HTML makes it easy to add multimedia like images, audio, and video to your webpage.</p>
+    </div>
+
+    <div class="bg-gray-100 p-4 rounded">
+      <h3 class="text-xl font-semibold mb-2">Try it Yourself</h3>
+      <textarea id="codeEditor" class="w-full h-64 p-2 font-mono border rounded mb-2">
+<img src="https://via.placeholder.com/150" alt="Placeholder Image">
+<audio controls>
+  <source src="audio.mp3" type="audio/mpeg">
+</audio>
+<video width="320" height="240" controls>
+  <source src="video.mp4" type="video/mp4">
+</video>
+      </textarea>
+      <button onclick="runCode()" class="bg-green-500 hover:bg-green-600 text-white px-4 py-2 rounded">Run Code</button>
+      <div class="mt-4 border p-2 bg-white rounded">
+        <iframe id="preview" class="w-full h-40 border" sandbox="allow-scripts"></iframe>
+      </div>
+    </div>
+
+    <div>
+      <label class="inline-flex items-center space-x-2">
+        <input type="checkbox" id="lessonComplete" class="form-checkbox" onchange="saveProgress()" />
+        <span>Mark Lesson as Complete</span>
+      </label>
+    </div>
+
+    <div class="bg-blue-50 p-4 rounded">
+      <h3 class="text-xl font-bold mb-4">Quick Quiz</h3>
+
+      <form id="quizForm" class="space-y-4">
+        <div>
+          <p class="font-medium">1. Which tag is used to display an image?</p>
+          <label><input type="radio" name="q1" value="a" class="mr-2">&lt;img&gt;</label><br>
+          <label><input type="radio" name="q1" value="b" class="mr-2">&lt;image&gt;</label><br>
+          <label><input type="radio" name="q1" value="c" class="mr-2">&lt;src&gt;</label>
+        </div>
+
+        <div>
+          <p class="font-medium">2. Which attribute is used to control playback of audio or video?</p>
+          <label><input type="radio" name="q2" value="a" class="mr-2">controls</label><br>
+          <label><input type="radio" name="q2" value="b" class="mr-2">autoplay</label><br>
+          <label><input type="radio" name="q2" value="c" class="mr-2">visible</label>
+        </div>
+
+        <button type="button" onclick="gradeQuiz()" class="mt-4 bg-blue-600 text-white px-4 py-2 rounded">Submit Answers</button>
+      </form>
+
+      <div id="quizResult" class="mt-4 font-semibold"></div>
+    </div>
+
+    <div class="flex justify-between">
+      <a href="lesson7.html" class="text-blue-500 hover:underline">&larr; Previous Lesson</a>
+      <a href="lesson9.html" class="text-blue-500 hover:underline">Next Lesson &rarr;</a>
+    </div>
+  </section>
+
+  <footer class="bg-pink-100 text-center p-4 mt-10">
+    <p class="text-sm text-gray-600">&copy; 2025 WebBloom</p>
+  </footer>
+
+  <script>
+    function runCode() {
+      const code = document.getElementById('codeEditor').value;
+      const iframe = document.getElementById('preview');
+      iframe.srcdoc = code;
+    }
+
+    function saveProgress() {
+      localStorage.setItem('lesson8Complete', document.getElementById('lessonComplete').checked);
+    }
+    window.onload = function() {
+      document.getElementById('lessonComplete').checked = localStorage.getItem('lesson8Complete') === 'true';
+    }
+
+    function toggleDarkMode() {
+      document.getElementById('page').classList.toggle('dark-mode');
+    }
+
+    function gradeQuiz() {
+      const answers = { q1: "a", q2: "a" };
+      let score = 0;
+      for (const q in answers) {
+        const selected = document.querySelector(`input[name="${q}"]:checked`);
+        if (selected && selected.value === answers[q]) score++;
+      }
+
+      const result = document.getElementById('quizResult');
+      if (score === Object.keys(answers).length) {
+        result.textContent = `✅ Great job! You got all answers right!`;
+        result.className = "text-green-600 font-semibold";
+      } else {
+        result.textContent = `❌ You got ${score} out of ${Object.keys(answers).length} correct. Try again!`;
+        result.className = "text-red-600 font-semibold";
+      }
+    }
+  </script>
+
+</body>
+</html>
