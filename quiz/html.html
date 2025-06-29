@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>HTML Quiz Battle | CodeSpark</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="bg-green-50 text-gray-800">
+  <!-- Header -->
+  <header class="bg-white shadow-md py-4">
+    <div class="max-w-7xl mx-auto px-6 flex justify-between items-center">
+      <h1 class="text-xl font-bold text-green-600">CodeSpark</h1>
+      <nav class="space-x-6 text-sm flex items-center">
+        <a href="../dashboard.php">Dashboard</a>
+        <a href="../quiz-battles.html" class="text-green-500 font-semibold">Back to Battles</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Main Quiz Section -->
+  <section class="max-w-3xl mx-auto p-6 mt-10 bg-white rounded-xl shadow-lg">
+    <div class="text-center mb-6">
+      <h2 class="text-2xl font-bold text-green-700">⚡ HTML Quiz Battle</h2>
+      <p class="text-gray-600 mt-2">Answer as many questions as you can in 30 seconds!</p>
+    </div>
+
+    <div id="quiz-container" class="space-y-6">
+      <div id="question" class="text-lg font-medium"></div>
+      <div id="answers" class="grid gap-4"></div>
+      <div class="flex justify-between items-center mt-6">
+        <div id="timer" class="text-sm text-gray-500">⏳ Time Left: <span id="time">30</span>s</div>
+        <div class="text-sm text-gray-700">🏆 Score: <span id="score">0</span></div>
+      </div>
+    </div>
+
+    <div id="end-message" class="hidden text-center mt-10">
+      <h3 class="text-xl font-bold text-green-700 mb-2">🎉 Time's up!</h3>
+      <p class="text-gray-600">You scored <span id="final-score">0</span> points.</p>
+      <button onclick="restartQuiz()" class="mt-4 bg-green-200 hover:bg-green-300 px-4 py-2 rounded">Try Again</button>
+    </div>
+  </section>
+
+  <!-- JS Script -->
+  <script>
+    const questions = [
+      {
+        question: "What does HTML stand for?",
+        options: [
+          "Hyperlinks and Text Markup Language",
+          "Home Tool Markup Language",
+          "Hyper Text Markup Language",
+          "Hyper Tool Multi Language"
+        ],
+        answer: 2
+      },
+      {
+        question: "Which HTML tag is used to define a paragraph?",
+        options: ["<p>", "<para>", "<text>", "<paragraph>"],
+        answer: 0
+      },
+      {
+        question: "What is the correct HTML for creating a hyperlink?",
+        options: [
+          "<a>http://example.com</a>",
+          "<link href='http://example.com'>Example</link>",
+          "<a href='http://example.com'>Example</a>",
+          "<url>http://example.com</url>"
+        ],
+        answer: 2
+      },
+      {
+        question: "Which tag is used to create a numbered list?",
+        options: ["<ul>", "<ol>", "<li>", "<list>"],
+        answer: 1
+      }
+    ];
+
+    let current = 0;
+    let score = 0;
+    let timeLeft = 30;
+    let timer;
+
+    const questionEl = document.getElementById('question');
+    const answersEl = document.getElementById('answers');
+    const timeEl = document.getElementById('time');
+    const scoreEl = document.getElementById('score');
+    const finalScoreEl = document.getElementById('final-score');
+    const endMessage = document.getElementById('end-message');
+    const quizContainer = document.getElementById('quiz-container');
+
+    function startQuiz() {
+      timer = setInterval(() => {
+        timeLeft--;
+        timeEl.textContent = timeLeft;
+        if (timeLeft <= 0) endQuiz();
+      }, 1000);
+
+      showQuestion();
+    }
+
+    function showQuestion() {
+      const q = questions[current];
+      questionEl.textContent = q.question;
+      answersEl.innerHTML = '';
+
+      q.options.forEach((opt, i) => {
+        const btn = document.createElement('button');
+        btn.textContent = opt;
+        btn.className = "w-full bg-green-100 hover:bg-green-200 py-2 px-4 rounded";
+        btn.onclick = () => selectAnswer(i);
+        answersEl.appendChild(btn);
+      });
+    }
+
+    function selectAnswer(index) {
+      if (index === questions[current].answer) {
+        score++;
+        scoreEl.textContent = score;
+      }
+
+      current++;
+      if (current < questions.length) {
+        showQuestion();
+      } else {
+        current = 0;
+        showQuestion(); // loop over questions
+      }
+    }
+
+    function endQuiz() {
+      clearInterval(timer);
+      quizContainer.classList.add('hidden');
+      finalScoreEl.textContent = score;
+      endMessage.classList.remove('hidden');
+    }
+
+    function restartQuiz() {
+      current = 0;
+      score = 0;
+      timeLeft = 30;
+      scoreEl.textContent = 0;
+      timeEl.textContent = 30;
+      endMessage.classList.add('hidden');
+      quizContainer.classList.remove('hidden');
+      startQuiz();
+    }
+
+    // Start quiz on load
+    window.onload = startQuiz;
+  </script>
+</body>
+</html>
