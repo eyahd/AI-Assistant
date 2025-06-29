@@ -1,0 +1,52 @@
+<?php
+session_start();
+if (!isset($_SESSION['username'])) {
+  header("Location: login.html");
+  exit();
+}
+$username = $_SESSION['username'];
+?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Dashboard - WebBloom</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="bg-gradient-to-r from-blue-50 to-green-100 min-h-screen text-gray-800 font-sans">
+
+<!-- Header -->
+<header class="bg-white shadow sticky top-0 z-50">
+  <div class="max-w-7xl mx-auto flex justify-between items-center p-4">
+    <div class="flex items-center space-x-2">
+      <img src="webbloom.png" alt="webbloom" class="w-10 h-auto">
+      <h1 class="text-2xl font-bold text-pink-400">WebBloom</h1>
+    </div>
+    <div class="flex items-center space-x-4">
+      <span>Welcome, <strong><?= htmlspecialchars($username) ?></strong></span>
+      <a href="logout.php" class="bg-red-400 hover:bg-red-500 text-white px-4 py-2 rounded-full">Logout</a>
+    </div>
+  </div>
+</header>
+
+<!-- Main Dashboard -->
+<main class="max-w-4xl mx-auto text-center py-20">
+  <h2 class="text-3xl font-bold mb-10">Choose Your Learning Path 🌱</h2>
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+    <a href="../webbloom/learn-html.html" class="bg-white p-6 rounded-lg shadow hover:shadow-lg">
+      <h3 class="text-xl font-semibold mb-2">Learn HTML</h3>
+      <p>Start from the basics of web structure.</p>
+    </a>
+    <a href="../webbloom/learn-css.html" class="bg-white p-6 rounded-lg shadow hover:shadow-lg">
+      <h3 class="text-xl font-semibold mb-2">Learn CSS</h3>
+      <p>Make your websites beautiful and responsive.</p>
+    </a>
+    <a href="../webbloom/learn-js.html" class="bg-white p-6 rounded-lg shadow hover:shadow-lg">
+      <h3 class="text-xl font-semibold mb-2">Learn JavaScript</h3>
+      <p>Make your websites dynamic and interactive.</p>
+    </a>
+  </div>
+</main>
+
+</body>
+</html>
