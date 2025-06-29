@@ -177,6 +177,13 @@ input:checked + .slider:before {
     <input type="text" id="user-input" placeholder="Frag mich etwas über HTML, CSS, JS..." required style="width: 80%;">
     <button type="submit">Senden</button>
 </form>
+<button onclick="goBack()" >Back</button>
+
+<script>
+    function goBack() {
+        window.history.back();
+    }
+</script>
 
 <script>
 const form = document.getElementById('chat-form');
