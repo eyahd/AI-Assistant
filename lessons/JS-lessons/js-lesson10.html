@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Lesson 10: ES6+ Features – WebBloom</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    body { font-family: 'Poppins', sans-serif; }
+    .dark-mode { background-color: #1a202c; color: #f7fafc; }
+  </style>
+</head>
+<body class="bg-white text-gray-800 transition-colors duration-300" id="page">
+
+<header class="bg-pink-100 shadow sticky top-0 z-50 flex justify-between items-center p-4">
+  <h1 class="text-2xl font-bold text-pink-500">JavaScript Lesson 10</h1>
+  <div class="flex items-center space-x-4">
+    <a href="/webbloom/learn-js.html" class="text-sm hover:text-pink-700">Back to Lessons</a>
+    <button onclick="toggleDarkMode()" class="bg-gray-200 px-3 py-1 rounded">🌓</button>
+  </div>
+</header>
+
+<section class="p-6 max-w-4xl mx-auto space-y-8">
+
+  <div>
+    <h2 class="text-3xl font-semibold mb-2">ES6+ Features</h2>
+    <p class="mb-4">ES6 introduced powerful new syntax and features that make JavaScript more readable and concise.</p>
+    <ul class="list-disc pl-5 space-y-1">
+      <li><strong>let & const:</strong> block-scoped variables</li>
+      <li><strong>Arrow Functions:</strong> shorter function syntax</li>
+      <li><strong>Template Literals:</strong> use backticks and <code>${}</code></li>
+      <li><strong>Destructuring:</strong> unpacking values from arrays and objects</li>
+    </ul>
+  </div>
+
+  <div class="bg-gray-100 p-4 rounded">
+    <h3 class="text-xl font-semibold mb-2">Try it Yourself</h3>
+    <textarea id="codeEditor" class="w-full h-64 p-2 font-mono border rounded mb-2">
+<script>
+  const person = { name: "Lena", age: 30 };
+  const { name, age } = person;
+
+  const greet = () => {
+    document.body.innerHTML += `<p>Hello, my name is ${name} and I am ${age} years old.</p>`;
+  };
+
+  greet();
+</script>
+    </textarea>
+    <button onclick="runCode()" class="bg-green-500 hover:bg-green-600 text-white px-4 py-2 rounded">Run Code</button>
+    <div class="mt-4 border p-2 bg-white rounded">
+      <iframe id="preview" class="w-full h-40 border" sandbox="allow-scripts"></iframe>
+    </div>
+  </div>
+
+  <div>
+    <label class="inline-flex items-center space-x-2">
+      <input type="checkbox" id="lessonComplete" class="form-checkbox" onchange="saveProgress()" />
+      <span>Mark Lesson as Complete</span>
+    </label>
+  </div>
+
+  <div class="bg-blue-50 p-4 rounded">
+    <h3 class="text-xl font-bold mb-4">Quick Quiz</h3>
+    <form id="quizForm" class="space-y-4">
+      <div>
+        <p class="font-medium">1. What is the main difference between <code>var</code> and <code>let</code>?</p>
+        <label><input type="radio" name="q1" value="a" class="mr-2">var is block scoped</label><br>
+        <label><input type="radio" name="q1" value="b" class="mr-2">let is block scoped and var is function scoped</label><br>
+        <label><input type="radio" name="q1" value="c" class="mr-2">let is older than var</label>
+      </div>
+      <div>
+        <p class="font-medium">2. What is the correct syntax for an arrow function?</p>
+        <label><input type="radio" name="q2" value="a" class="mr-2">function =&gt; () {}</label><br>
+        <label><input type="radio" name="q2" value="b" class="mr-2">() =&gt; {}</label><br>
+        <label><input type="radio" name="q2" value="c" class="mr-2">=> () {}</label>
+      </div>
+    </form>
+    <div id="quizResult" class="mt-4"></div>
+    <button onclick="gradeQuiz()" class="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded">Submit Answers</button>
+  </div>
+
+  <div class="flex justify-between">
+    <a href="js-lesson9.html" class="text-blue-500 hover:underline">&larr; Previous Lesson</a>
+    <span class="text-gray-400">End of Module</span>
+  </div>
+
+</section>
+
+<script>
+  function runCode() {
+      const code = document.getElementById("codeEditor").value;
+      const iframe = document.getElementById("preview");
+      iframe.srcdoc = code;
+    }
+
+  function toggleDarkMode() {
+    document.getElementById("page").classList.toggle("dark-mode");
+  }
+
+  function saveProgress() {
+    localStorage.setItem('lesson10Complete', document.getElementById('lessonComplete').checked);
+  }
+
+  window.onload = function() {
+    document.getElementById('lessonComplete').checked = localStorage.getItem('lesson10Complete') === 'true';
+  }
+
+  function gradeQuiz() {
+    const answers = { q1: "b", q2: "b" };
+    let score = 0;
+    for (const q in answers) {
+      const selected = document.querySelector(`input[name="${q}"]:checked`);
+      if (selected && selected.value === answers[q]) score++;
+    }
+    const result = document.getElementById("quizResult");
+    if (score === Object.keys(answers).length) {
+      result.textContent = "✅ Great job! You got all answers right!";
+      result.className = "text-green-600 font-semibold";
+    } else {
+      result.textContent = `❌ You got ${score} out of ${Object.keys(answers).length} correct. Try again!`;
+      result.className = "text-red-600 font-semibold";
+    }
+  }
+</script>
+
+</body>
+</html>

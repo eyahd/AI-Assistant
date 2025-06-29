@@ -1,0 +1,32 @@
+[
+    {
+        "question": "What is HTML?",
+        "answer": "HTML (HyperText Markup Language) is the standard language used to create and structure webpages. It consists of elements and tags that define the content and layout of a webpage",
+        "interval": 4,
+        "due": 1750324423
+    },
+    {
+        "question": "What is the purpose of the <head> tag?",
+        "answer": "The <head> tag contains metadata about the webpage, such as the title, character encoding, linked stylesheets, and script",
+        "interval": 2,
+        "due": 1750151628
+    },
+    {
+        "question": "Which tag is used to create hyperlinks in HTML?",
+        "answer": "The <a> tag is used to create hyperlinks. It requires the href attribute to specify the destination URL.",
+        "interval": 2,
+        "due": 1750151632
+    },
+    {
+        "question": "What is the difference between <div> and <span>?",
+        "answer": "The <div> tag is a block-level element used for structuring content, while the <span> tag is an inline element used for styling or grouping text inside a line.",
+        "interval": 2,
+        "due": 1750159442
+    },
+    {
+        "question": "How do you embed an image in an HTML page?",
+        "answer": "Use the <img> tag with the src attribute to specify the image source, like <img src='image.jpg' alt='Description'>.",
+        "interval": 1,
+        "due": 1750073045
+    }
+]

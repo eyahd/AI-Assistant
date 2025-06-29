@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Flashcards Home - WebBloom Style</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Animated gradient background */
+body {
+  background: linear-gradient(270deg, #a8edea, #fed6e3, #f9f586, #a8edea);
+  background-size: 800% 800%;
+  animation: gradientShift 15s ease infinite;
+  min-height: 100vh;
+  font-family: 'Inter', sans-serif;
+  padding-top: 4rem; /* Prevent content overlap with fixed navbar */
+}
+
+@keyframes gradientShift {
+  0% {background-position:0% 50%;}
+  50% {background-position:100% 50%;}
+  100% {background-position:0% 50%;}
+}
+
+/* Navbar Fix */
+header {
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background: white;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  padding: 1rem 0;
+  z-index: 1000;
+}
+
+/* Flashcard icons */
+.flashcard-icon {
+  font-size: 2.5rem;
+  transition: transform 0.3s ease;
+}
+
+.flashcard:hover .flashcard-icon {
+  transform: scale(1.3);
+}
+  </style>
+</head>
+
+<body>
+
+  <!-- Navigation Bar -->
+  <header>
+    <div class="max-w-full mx-auto flex justify-between items-center px-6">
+      <!-- Logo -->
+      <div class="flex items-center space-x-2">
+        <img src="../webbloom.png" alt="WebBloom Logo" class="w-10 h-auto" />
+        <h1 class="text-2xl font-bold text-pink-400">WebBloom</h1>
+      </div>
+      <!-- Nav Links -->
+      <nav class="space-x-6 text-sm flex items-center">
+        <a href="../dashboard.php" class="hover:text-blue-500">Dashboard</a>
+        <a href="../fix-my-code.html" class="hover:text-blue-500">Fix My Code</a>
+        <a href="../chatbot/index1.html" class="hover:text-blue-500">Chatbot</a>
+        <a href="../quiz-battles.html" class="hover:text-blue-500">Quiz Battles</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main class="min-h-screen flex flex-col items-center pt-24 px-6">
+    <h1 class="text-4xl font-extrabold mb-12 text-pink-500 drop-shadow-lg">What do you want to learn?</h1>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 max-w-5xl w-full">
+      <a href="cards.php?set=html" class="flashcard flex flex-col items-center justify-center bg-white bg-opacity-80 rounded-2xl shadow-lg p-10 text-pink-600 font-semibold cursor-pointer text-center">
+        <div class="flashcard-icon mb-4">📘</div> HTML
+      </a>
+
+      <a href="cards.php?set=css" class="flashcard flex flex-col items-center justify-center bg-white bg-opacity-80 rounded-2xl shadow-lg p-10 text-pink-600 font-semibold cursor-pointer text-center">
+        <div class="flashcard-icon mb-4">🎨</div> CSS
+      </a>
+
+      <a href="cards.php?set=js" class="flashcard flex flex-col items-center justify-center bg-white bg-opacity-80 rounded-2xl shadow-lg p-10 text-pink-600 font-semibold cursor-pointer text-center">
+        <div class="flashcard-icon mb-4">⚙️</div> JavaScript
+      </a>
+
+      <a href="review.php" class="flashcard flex flex-col items-center justify-center bg-white bg-opacity-80 rounded-2xl shadow-lg p-10 text-pink-600 font-semibold cursor-pointer text-center">
+        <div class="flashcard-icon mb-4">⏳</div> Review Time!
+      </a>
+    </div>
+  </main>
+
+</body>
+</html>

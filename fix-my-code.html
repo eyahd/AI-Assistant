@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Fix My Code - WebBloom</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet" />
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+    }
+  </style>
+</head>
+<body class="bg-gradient-to-r from-green-100 to-blue-100 min-h-screen flex flex-col">
+
+  <!-- Header -->
+  <header class="bg-white shadow sticky top-0 z-50">
+    <div class="max-w-7xl mx-auto flex justify-between items-center p-4">
+      <div class="flex items-center space-x-2">
+        <img src="webbloom.png" alt="webbloom" class="w-10 h-auto" />
+        <h1 class="text-2xl font-bold text-pink-400">WebBloom</h1>
+      </div>
+      <nav class="space-x-6 text-sm flex items-center">
+        <a href="dashboard.php" class="hover:text-blue-500">Dashboard</a>
+        <a href="fix-my-code.html" class="text-blue-600 font-semibold">Fix My Code</a>
+        <a href="quiz-battles.html" class="text-blue-600 font-semibold">Quiz Battles</a>
+        <a href="chatbot/index1.html" class="hover:text-blue-500">Chatbot</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Fix My Code Section -->
+  <main class="flex-grow py-16 px-4">
+    <div class="max-w-4xl mx-auto bg-white p-8 rounded-xl shadow-md">
+      <h2 class="text-3xl font-bold mb-4 text-center text-pink-400">Try Our AI Code Fixer</h2>
+      <p class="text-center text-gray-600 mb-6">
+        Paste your HTML, CSS, or JS code below and get suggestions, corrections, and clean code instantly.
+      </p>
+
+      <!-- Language Selector -->
+      <div class="mb-4">
+        <label for="language" class="block text-sm font-medium text-gray-700 mb-1">Select Language:</label>
+        <select id="language" class="border border-gray-300 p-2 rounded w-full max-w-xs">
+          <option value="javascript">JavaScript</option>
+          <option value="html">HTML</option>
+          <option value="css">CSS</option>
+        </select>
+      </div>
+
+      <!-- Textarea Input -->
+      <textarea
+        id="codeInput"
+        class="w-full p-4 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-300 mb-6"
+        rows="10"
+        placeholder="Paste your code here..."
+      ></textarea>
+
+      <!-- Submit Button -->
+      <div class="flex justify-center">
+        <button
+          onclick="fixCode()"
+          class="bg-pink-400 hover:bg-pink-500 text-white font-semibold px-6 py-3 rounded-full transition"
+        >
+          Fix My Code
+        </button>
+      </div>
+
+      <!-- Output Section -->
+      <div id="outputSection" class="mt-10 hidden">
+        <h3 class="text-2xl font-semibold mb-4 text-gray-800">Results:</h3>
+        <div id="correctedCode" class="bg-gray-100 p-4 rounded-md text-sm whitespace-pre-wrap font-mono mb-4"></div>
+        <div id="suggestions" class="text-sm text-gray-700"></div>
+      </div>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-white py-6 mt-10">
+    <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center">
+      <p class="text-sm text-gray-600">&copy; 2025 WebBloom. All rights reserved.</p>
+      <div class="space-x-4 text-sm">
+        <a href="#" class="hover:text-blue-500">Privacy Policy</a>
+        <a href="#" class="hover:text-blue-500">Terms of Service</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- JavaScript -->
+  <script>
+    async function fixCode() {
+      const code = document.getElementById("codeInput").value;
+      const lang = document.getElementById("language").value;
+      const secretKey = "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";
+
+      try {
+        const response = await fetch("fix-code.php", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify({ code, language: lang, secret: secretKey })
+        });
+
+        const result = await response.json();
+
+        if (result.error) {
+          alert("Error: " + result.error);
+          return;
+        }
+
+        document.getElementById("correctedCode").innerText = result.fixedCode;
+        document.getElementById("suggestions").innerHTML =
+          "<ul class='list-disc list-inside'>" +
+          result.suggestions.map(s => `<li>${s}</li>`).join('') +
+          "</ul>";
+        document.getElementById("outputSection").classList.remove("hidden");
+      } catch (error) {
+        alert("Something went wrong: " + error.message);
+      }
+    }
+  </script>
+</body>
+</html>
